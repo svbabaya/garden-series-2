@@ -34,33 +34,34 @@ class Priority(enum.Enum):
     ABSOLUTE = 3   
 
 class Plant(db.Model):
+    __tablename__ = 'plants'
     id = db.Column(db.Integer, primary_key=True)
-    # hash
     name = db.Column(db.String(100), unique=True, nullable=False)
     category = db.Column(db.Integer, nullable=False, default=Category.empty)
     intro = db.Column(db.String(300), nullable=False)
     thumbnail = db.Column(db.String(100), nullable=False, default='default.jpg')
     location = db.Column(db.Integer, nullable=False)
-    # article foreing key
     status = db.Column(db.Integer, nullable=False, default=Status.EMPTY)
     date = db.Column(db.DateTime, default=datetime.now)
+    articles = db.relationship('Article', backref='plant') # articles : attribute in model Plant, plant : attribute in model Article
     def __repr__(self):
-        return f'<Plant {self.id}>'
+        return f'<Plant {self.name}>'
 
 class Article(db.Model):
+    __tablename__ = 'articles'
     id = db.Column(db.Integer, primary_key=True)
-    # hash
     content = db.Column(db.Text(3000), nullable=False)
-    photo = db.Column(db.String(100), nullable=False, default='default.jpg')  
+    photo = db.Column(db.String(100), nullable=True, default='default.jpg')  
     composition = db.Column(db.Integer, nullable=False, default=Composition.TOP)
+    plant_id = db.Column(db.Integer, db.ForeignKey('plants.id'))
     status = db.Column(db.Integer, nullable=False, default=Status.EMPTY)
     date = db.Column(db.DateTime, default=datetime.now)
     def __repr__(self):
         return f'<Article {self.id}>'
 
 class Message(db.Model):
+    __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
-    # hash
     text = db.Column(db.Text(300), unique=True, nullable=False)
     author = db.Column(db.String(100))
     priority = db.Column(db.Integer, nullable=False, default=Priority.ZERO)
