@@ -52,8 +52,8 @@ class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text(3000), nullable=False)
     photo = db.Column(db.String(100), nullable=True, default='default.jpg')  
-    composition = db.Column(db.Integer, nullable=False, default=Composition.TOP)
-    plant_id = db.Column(db.Integer, db.ForeignKey('plants.id'))
+    composition = db.Column(db.Integer, nullable=False, default=Composition.IMG_TOP)
+    plant_id = db.Column(db.Integer, db.ForeignKey('plants.id'), nullable=False)
     status = db.Column(db.Integer, nullable=False, default=Status.EMPTY)
     date = db.Column(db.DateTime, default=datetime.now)
     def __repr__(self):
