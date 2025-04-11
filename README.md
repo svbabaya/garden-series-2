@@ -1,2 +1,2 @@
 # garden-series-2
-School garden portal project
+Web content of the project Garden. Part 2. School number 30.

@@ -20,18 +20,26 @@ class Category(enum.Enum):
     herb_annual_ornamental_plant = 6
     herb_perennial_wild_plant = 7   
 
+class Location(enum.Enum):
+    unknown = 0 
+    zone_1 = 1
+    zone_2 = 2
+    zone_3 = 3
+    zone_4 = 4
+    zone_5 = 5
+
 class Composition(enum.Enum):
-    IMG_TOP = 1
-    IMG_RIGHT = 2
-    IMG_BOTTOM = 3
-    IMG_LEFT = 4
-    TEXT_ONLY = 5
+    img_top = 1
+    img_right = 2
+    img_bottom = 3
+    img_left = 4
+    text_only = 5
 
 class Priority(enum.Enum):
-    ZERO = 0
-    NORMAL = 1
-    NEWS = 2
-    ABSOLUTE = 3   
+    zero = 0
+    normal = 1
+    news = 2
+    absolute = 3   
 
 class Plant(db.Model):
     __tablename__ = 'plants'
