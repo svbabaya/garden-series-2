@@ -5,10 +5,9 @@ import enum
 db = SQLAlchemy()
 
 class Status(enum.Enum):
-    EMPTY = 0
-    CREATED = 1
-    UPDATED = 2
-    DELETED = 3
+    CREATED = 0
+    UPDATED = 1
+    DELETED = 2
 
 class Category(enum.Enum):
     empty = 0
@@ -36,44 +35,51 @@ class Composition(enum.Enum):
     text_only = 5
 
 class Priority(enum.Enum):
-    zero = 0
+    low = 0
     normal = 1
     news = 2
-    absolute = 3   
+    general = 3   
+
+class Display(enum.Enum):
+    disabled = 0
+    enabled = 1
 
 class Plant(db.Model):
     __tablename__ = 'plants'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
-    category = db.Column(db.Integer, nullable=False, default=Category.empty)
+    category = db.Column(db.Enum(Category), nullable=False, default=Category.empty)
     intro = db.Column(db.String(300), nullable=False)
     thumbnail = db.Column(db.String(100), nullable=False, default='default.jpg')
-    location = db.Column(db.Integer, nullable=False)
-    status = db.Column(db.Integer, nullable=False, default=Status.EMPTY)
-    date = db.Column(db.DateTime, default=datetime.now)
-    articles = db.relationship('Article', backref='plant') # articles : attribute in model Plant, plant : attribute in model Article
+    location = db.Column(db.Enum(Location), nullable=False, default=Location.unknown)
+    status = db.Column(db.Enum(Status), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now)
+    display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
+    articles = db.relationship('Article', backref='plant',  lazy='dynamic', cascade='all, delete-orphan') # articles : attribute in model Plant, plant : attribute in model Article
     def __repr__(self):
         return f'<Plant {self.name}>'
 
 class Article(db.Model):
     __tablename__ = 'articles'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text(3000), nullable=False)
+    text = db.Column(db.Text, nullable=False)
     photo = db.Column(db.String(100), nullable=True, default='default.jpg')  
-    composition = db.Column(db.Integer, nullable=False, default=Composition.IMG_TOP)
-    plant_id = db.Column(db.Integer, db.ForeignKey('plants.id'), nullable=False)
-    status = db.Column(db.Integer, nullable=False, default=Status.EMPTY)
-    date = db.Column(db.DateTime, default=datetime.now)
+    composition = db.Column(db.Enum(Composition), nullable=False, default=Composition.img_top)
+    plant_id = db.Column(db.Integer, db.ForeignKey('plants.id', ondelete='CASCADE'), nullable=False)
+    status = db.Column(db.Enum(Status), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now)
+    display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
     def __repr__(self):
         return f'<Article {self.id}>'
 
 class Message(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Text(300), unique=True, nullable=False)
-    author = db.Column(db.String(100))
-    priority = db.Column(db.Integer, nullable=False, default=Priority.ZERO)
-    status = db.Column(db.Integer, nullable=False, default=Status.EMPTY)
-    date = db.Column(db.DateTime, default=datetime.now)
+    text = db.Column(db.String(300), unique=True, nullable=False)
+    author = db.Column(db.String(100), nullable=False)
+    priority = db.Column(db.Enum(Priority), nullable=False, default=Priority.low)
+    status = db.Column(db.Enum(Status), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now)
+    display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
     def __repr__(self):
         return f'<Message {self.id}>'
