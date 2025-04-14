@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="ru"></html>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="">
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>

@@ -77,7 +77,7 @@ class Article(db.Model):
 class Message(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(300), unique=True, nullable=False)
+    text = db.Column(db.Text, unique=True, nullable=False)
     author = db.Column(db.String(100), nullable=False)
     priority = db.Column(db.Enum(Priority), nullable=False, default=Priority.low)
     status = db.Column(db.Enum(Status), nullable=False)

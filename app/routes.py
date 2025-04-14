@@ -1,13 +1,22 @@
 from flask import request, render_template, jsonify
 from app import app
+from app.forms import MessageForm
 
-@app.route('/index')
-def index():
-    return 'Hi!'
+@app.route('/admin', methods=['POST', 'GET'])
+def admin():
+    form = MessageForm()
+    if form.validate_on_submit():
+        print(form.text.data)
+        print(form.author.data)
+        print(form.priority.data)
+        print(form.display.data)
+    return render_template('admin.html', form=form)
+
+
 
 @app.route('/')
-def open_form():
-    return render_template('form.html')
+def index():
+    return 'Hi!'
 
 @app.route('/form', methods = ['POST'])
 def form_handler():
