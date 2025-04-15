@@ -1,32 +1,34 @@
-from flask import request, render_template, jsonify
+from flask import request, session, render_template, redirect, url_for, flash
 from app import app
 from app.forms import MessageForm
 
-@app.route('/admin', methods=['POST', 'GET'])
-def admin():
-    form = MessageForm()
-    if form.validate_on_submit():
-        print(form.text.data)
-        print(form.author.data)
-        print(form.priority.data)
-        print(form.display.data)
-    return render_template('admin.html', form=form)
+# admin endpoints
+@app.route('/admin')
+def open_admin_page():
+    return render_template('admin.html')
+
+@app.route('/messages', methods=['POST', 'GET'])
+def create_message():
+    form = MessageForm(request.form)
+    if request.method == 'POST' and form.validate():
+        print('Make new object Message and add it to database')
+        flash('New message created successful')
+        return redirect(url_for('open_admin_page'))
+    return render_template('messages.html', form=form)
+
+@app.route('/messages/all')
+def show_messages():
+    print('Get all messages')
+    return 'All messages'
+
 
 
 
 @app.route('/')
 def index():
-    return 'Hi!'
+    return 'Hi'
 
-@app.route('/form', methods = ['POST'])
-def form_handler():
-    name = request.form['name']
-    return f'Name: {name}'
 
-@app.route('/json')
-def json_handler():
-    message = {'name': 'Serge'}
-    return jsonify(message)
 
 if __name__ == '__main__':
     app.run(debug=True)

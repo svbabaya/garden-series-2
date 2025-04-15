@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Garden admin{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form action="/messages" method="post" class="">
+        {{ form.hidden_tag() }}
+        <p>{{ form.text.label() }} {{ form.text() }}</p>
+        <p>{{ form.author.label() }} {{ form.author() }}</p>
+        <p>{{ form.priority.label() }} {{ form.priority() }}</p>
+        <p>{{ form.display.label() }} {{ form.display() }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+{% endblock %}

@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block content %}
-    <form action="/admin" method="post" class="">
-        {{ form.hidden_tag() }}
-        <p>{{ form.text.label() }} {{ form.text() }}</p>
-        <p>{{ form.author.label() }} {{ form.author() }}</p>
-        <p>{{ form.priority.label() }} {{ form.priority() }}</p>
-        <p>{{ form.display.label() }} {{ form.display() }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
+
+    {% for msg in get_flashed_messages() %}
+        <div>{{msg}}</div>
+    {% endfor %}
+    <div>
+        <a href="{{ url_for('create_message') }}">Create message</a>
+    </div>
+    <div>
+        <a href="{{ url_for('show_messages') }}">Open all messages</a>
+    </div>
+
+
+
 {% endblock %}

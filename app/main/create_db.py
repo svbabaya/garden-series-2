@@ -19,7 +19,8 @@ def initialize_database():
         db.create_all()
         plant_1 = Plant(
             name='Гинкго билоба', 
-            # category=Category.tree, # default
+            category=Category.tree,
+            code = '1.5',
             intro='Дерево, пережившее динозавров, древний ключ к ясности ума.', 
             # thumbnail='/', # default
             # location=Location.unknown, # default

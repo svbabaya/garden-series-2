@@ -5,12 +5,11 @@ import enum
 db = SQLAlchemy()
 
 class Status(enum.Enum):
-    CREATED = 0
-    UPDATED = 1
-    DELETED = 2
+    CREATED = 1
+    UPDATED = 2
+    DELETED = 3
 
 class Category(enum.Enum):
-    empty = 0
     tree = 1
     fruit_tree = 2
     bush = 3
@@ -35,10 +34,10 @@ class Composition(enum.Enum):
     text_only = 5
 
 class Priority(enum.Enum):
-    low = 0
-    normal = 1
-    news = 2
-    general = 3   
+    low = 1
+    normal = 2
+    news = 3
+    general = 4
 
 class Display(enum.Enum):
     disabled = 0
@@ -50,7 +49,8 @@ class Plant(db.Model):
     __tablename__ = 'plants'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
-    category = db.Column(db.Enum(Category), nullable=False, default=Category.empty)
+    category = db.Column(db.Enum(Category), nullable=False)
+    code = db.Column(db.String(10), unique=True, nullable=False)
     intro = db.Column(db.String(300), unique=True, nullable=False)
     thumbnail = db.Column(db.String(100), nullable=False, default='default.jpg')
     location = db.Column(db.Enum(Location), nullable=False, default=Location.unknown)
