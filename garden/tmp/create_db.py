@@ -2,7 +2,7 @@ import sys
 sys.dont_write_bytecode = True
 
 from flask import Flask
-from models import db, Plant, Article, Message, Priority, Status, Category, Composition, Location, Display
+from garden.models import db, Plant, Article, Message, Priority, Status, Category, Composition, Location, Display
 
 # import os
 # basedir = os.path.abspath(os.path.dirname(__file__))
@@ -24,7 +24,7 @@ def initialize_database():
             intro='Дерево, пережившее динозавров, древний ключ к ясности ума.', 
             # thumbnail='/', # default
             # location=Location.unknown, # default
-            status=Status.CREATED,
+            # status=Status.CREATED # default
             # display=Display.disabled # default
             )
         db.session.add(plant_1)
@@ -35,7 +35,7 @@ def initialize_database():
             # photo='/', # default
             # composition=Composition.img_top, # default 
             plant_id=plant_1.id,  
-            status=Status.CREATED
+            # status=Status.CREATED # default
             # display=Display.disabled # default
             )
 
@@ -43,8 +43,8 @@ def initialize_database():
             text='Следи за своим садом — вот моё правило. Ухаживай за цветами, а не гоняйся за бабочками, и тогда бабочки прилетят к тебе сами. Так жизнь и устроена.', 
             author='Мэттью МакКонахи', 
             # priority=Priority.low, # default
-            status=Status.CREATED
             # display=Display.disabled # default
+            # status=Status.CREATED, # default
             )
     
         try:

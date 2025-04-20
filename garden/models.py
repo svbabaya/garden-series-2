@@ -1,8 +1,12 @@
-from flask_sqlalchemy import SQLAlchemy
+from garden import db
 from datetime import datetime
 import enum
+# from sqlalchemy.orm import Mapped, mapped_column
+# from sqlalchemy import Integer, String, Enum, DateTime
+# from sqlalchemy.ext.declarative import declarative_base
+# from dataclasses import dataclass
 
-db = SQLAlchemy()
+# Base = declarative_base() 
 
 class Status(enum.Enum):
     CREATED = 1
@@ -37,7 +41,7 @@ class Priority(enum.Enum):
     low = 1
     normal = 2
     news = 3
-    general = 4
+    absolute = 4
 
 class Display(enum.Enum):
     disabled = 0
@@ -54,10 +58,10 @@ class Plant(db.Model):
     intro = db.Column(db.String(300), unique=True, nullable=False)
     thumbnail = db.Column(db.String(100), nullable=False, default='default.jpg')
     location = db.Column(db.Enum(Location), nullable=False, default=Location.unknown)
-    status = db.Column(db.Enum(Status), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.now)
+    status = db.Column(db.Enum(Status), nullable=False, default=Status.CREATED)
+    timestamp = db.Column(db.DateTime(), default=datetime.now)
     display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
-    articles = db.relationship('Article', backref='plant',  lazy='dynamic', cascade='all, delete-orphan')
+    articles = db.relationship('Article', backref='plant', lazy='dynamic', cascade='all, delete-orphan')
     def __repr__(self):
         return f'<Plant {self.name}>'
 
@@ -68,7 +72,7 @@ class Article(db.Model):
     photo = db.Column(db.String(100), nullable=True, default='default.jpg')  
     composition = db.Column(db.Enum(Composition), nullable=False, default=Composition.img_top)
     plant_id = db.Column(db.Integer, db.ForeignKey('plants.id', ondelete='CASCADE'), nullable=False)
-    status = db.Column(db.Enum(Status), nullable=False)
+    status = db.Column(db.Enum(Status), nullable=False, default=Status.CREATED)
     timestamp = db.Column(db.DateTime, default=datetime.now)
     display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
     def __repr__(self):
@@ -76,12 +80,41 @@ class Article(db.Model):
 
 class Message(db.Model):
     __tablename__ = 'messages'
+
     id = db.Column(db.Integer, primary_key=True)
+
     text = db.Column(db.Text, unique=True, nullable=False)
     author = db.Column(db.String(100), nullable=False)
     priority = db.Column(db.Enum(Priority), nullable=False, default=Priority.low)
-    status = db.Column(db.Enum(Status), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.now)
     display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
+
+    status = db.Column(db.Enum(Status), nullable=False, default=Status.CREATED)
+    timestamp = db.Column(db.DateTime, default=datetime.now)
+    
     def __repr__(self):
         return f'<Message {self.id}>'
+
+
+# class Message(Base):
+#     __tablename__ = 'messages'
+
+#     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+#     text: Mapped[str] = mapped_column(String(400), unique=True, nullable=False)
+#     author: Mapped[str] = mapped_column(String(100), nullable=False)
+#     priority: Mapped[str] = mapped_column(Enum(Priority), nullable=False, default=Priority.low)
+#     display: Mapped[str] = mapped_column(Enum(Display), nullable=False, default=Display.disabled)
+#     status: Mapped[str] = mapped_column(Enum(Status), nullable=False, default=Status.CREATED)
+#     timestamp: Mapped[str] = mapped_column(DateTime, default=datetime.now)
+    
+#     def __repr__(self):
+#         return f'<Message {self.id}>'
+    
+# @dataclass
+# class Message(Base):
+#     id: int
+#     text: str
+#     author: str
+#     priority: str
+#     display: str
+#     status: str
+#     timestamp: str
