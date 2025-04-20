@@ -5,13 +5,18 @@
 {% endblock %}
 
 {% block content %}
-    <form action="/messages" method="post" class="">
-        {{ form.hidden_tag() }}
-        <p>{{ form.text.label() }} {{ form.text() }}</p>
-        <p>{{ form.author.label() }} {{ form.author() }}</p>
-        <p>{{ form.priority.label() }} {{ form.priority() }}</p>
-        <p>{{ form.display.label() }} {{ form.display() }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
+  {% for message in messages %}
+    <p>{{ message.id }}</p>
+    <p>{{ message.text }}</p>
+    <p>{{ message.author }}</p>
+    <p>{{ message.priority }}</p>
+    <p>{{ message.display }}</p>
+    <p>{{ message.status }}</p>
+    <p>{{ message.timestamp }}</p>
+    <!-- <button type="button"> -->
+      <a href="{{ url_for('edit_message', message_id=message.id) }}">Edit</a>
+    <!-- </button> -->
+    <hr>
 
+  {% endfor %}
 {% endblock %}

@@ -2,6 +2,10 @@ from flask import request, session, render_template, redirect, url_for, flash, s
 from garden import app, db
 from garden.models import Message, Display
 from garden.forms import MessageForm
+
+from sqlalchemy.sql.expression import func
+
+import random
 # import jsonify
 
 # admin endpoints
@@ -9,7 +13,7 @@ from garden.forms import MessageForm
 def open_admin_page():
     return render_template('admin.html')
 
-@app.route('/messages/', methods=['POST', 'GET'])
+@app.route('/admin/message/', methods=('POST', 'GET'))
 def create_message():
     form = MessageForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -20,12 +24,6 @@ def create_message():
             display = Display.enabled
         else: 
             display = Display.disabled
-
-        print(text)
-        print(author)
-        print(priority)
-        print(display)
-
         message = Message(text=text, 
                           author=author, 
                           priority=priority, 
@@ -35,22 +33,26 @@ def create_message():
 
         flash('New message created successful')
         return redirect(url_for('open_admin_page'))
-    return render_template('messages.html', form=form)
+    return render_template('message.html', form=form)
 
+@app.route('/admin/messages/')
+def show_all_messages():
+    messages = Message.query.all()
+    return render_template('messages.html', messages=messages)
 
-
-
-@app.route('/messages/all/')
-def show_messages():
-    print('Get all messages')
-    return 'All messages'
-
-
+# ToDo make edit form for message
+# @app.route('/admin/message/<int:message_id>', methods=('GET', 'PATCH'))
+# def edit_message(message_id):
+#     return 'Open edit form for message'
 
 
 @app.route('/')
+@app.route('/index/')
 def index():
-    return 'Hi'
+    current_message = Message.query.filter(Message.priority == 'normal',
+                                           Message.status != 'DELETED',
+                                           Message.display == 'enabled').order_by(func.random()).first()
+    return render_template ('index.html', message=current_message)
 
 
 # ToDo export db to json
@@ -58,8 +60,6 @@ def index():
 # def export_messages():
 #   data = Message.query.all()
 #   return jsonify(data) 
-
-
 
 
 if __name__ == '__main__':
