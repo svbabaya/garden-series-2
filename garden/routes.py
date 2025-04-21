@@ -1,6 +1,6 @@
 from flask import request, session, render_template, redirect, url_for, flash, send_from_directory
 from garden import app, db
-from garden.models import Message, Display
+from garden.models import Message, Display, Category
 from garden.forms import MessageForm
 
 from sqlalchemy.sql.expression import func
@@ -52,7 +52,17 @@ def index():
     current_message = Message.query.filter(Message.priority == 'normal',
                                            Message.status != 'DELETED',
                                            Message.display == 'enabled').order_by(func.random()).first()
-    return render_template ('index.html', message=current_message)
+    return render_template ('index.html', message=current_message, categories=Category)
+
+@app.route('/plants/<category_name>/')
+def show_category_list(category_name):
+    # ToDo get list of plants
+    print('Get list of plants')
+    return render_template('category.html', category_title=Category[category_name].value)
+
+
+
+
 
 
 # ToDo export db to json

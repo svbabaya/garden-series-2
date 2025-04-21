@@ -7,18 +7,14 @@
 {% block content %}
 
 <div class="message">
-    <p class="message__text">{{ message.text|safe }}</p>
-    <p class="message__author">{{ message.author|safe }}</p>
+  <p class="message__text">{{ message.text|safe }}</p>
+  <p class="message__author">{{ message.author|safe }}</p>
 </div>
 
-
-
-
-<div class="btn-category">
-    <a href="">Trees</a>
-</div>
-
-
-
+{% for category in categories %}
+  <div class="btn-category">
+    <a href="{{ url_for('show_category_list', category_name=category.name) }}">{{ category.value }}</a>
+  </div>
+{% endfor %}
 
 {% endblock %}

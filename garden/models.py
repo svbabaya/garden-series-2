@@ -14,13 +14,13 @@ class Status(enum.Enum):
     DELETED = 3
 
 class Category(enum.Enum):
-    tree = 1
-    fruit_tree = 2
-    bush = 3
-    fruit_bush = 4
-    herb_perennial_ornamental_plant = 5
-    herb_annual_ornamental_plant = 6
-    herb_perennial_wild_plant = 7   
+    tree = 'Деревья'
+    fruit_tree = 'Плодовые деревья'
+    bush = 'Кустарники'
+    fruit_bush = 'Плодовые кустарники'
+    herb_perennial_ornamental_plant = 'Многолетние декоративные'
+    herb_annual_ornamental_plant = 'Однолетние декоративные'
+    herb_perennial_wild_plant = 'Многолетние дикорастущие'  
 
 class Location(enum.Enum):
     unknown = 0 

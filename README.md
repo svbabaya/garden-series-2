@@ -12,7 +12,7 @@ ToDo
 
 8. Endpoint for edit message
 
-9. Make buttons for categories on index.html
+OK 9. Make buttons for categories on index.html
 10. Make design index.html
 11. Make plants.html for lists of plants
 
