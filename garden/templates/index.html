@@ -7,8 +7,8 @@
 {% block content %}
 
 <div class="message">
-    <p class="message__text">{{ message.text }}</p>
-    <p class="message__author">{{ message.author }}</p>
+    <p class="message__text">{{ message.text|safe }}</p>
+    <p class="message__author">{{ message.author|safe }}</p>
 </div>
 
 
