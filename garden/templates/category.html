@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}{{ category_title }}{% endblock %}</h1>
+    <h1>{% block title %}{{ category_title }}{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
 
 
+
+<div class="btn-back">
+    <a href="{{ url_for('index') }}">Back</a>
+</div>
 
 {% endblock %}

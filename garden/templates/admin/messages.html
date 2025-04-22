@@ -13,10 +13,12 @@
     <p>{{ message.display }}</p>
     <p>{{ message.status }}</p>
     <p>{{ message.timestamp }}</p>
-    <!-- <button type="button"> -->
+    <button type="button">
       <a href="{{ url_for('edit_message', message_id=message.id) }}">Edit</a>
-    <!-- </button> -->
+    </button>
     <hr>
-
   {% endfor %}
+  <div class="btn-back">
+    <a href="{{ url_for('open_admin_page') }}">Back</a>
+  </div>
 {% endblock %}

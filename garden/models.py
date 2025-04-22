@@ -51,30 +51,39 @@ class Display(enum.Enum):
 
 class Plant(db.Model):
     __tablename__ = 'plants'
+
     id = db.Column(db.Integer, primary_key=True)
+
     name = db.Column(db.String(100), unique=True, nullable=False)
     category = db.Column(db.Enum(Category), nullable=False)
     code = db.Column(db.String(10), unique=True, nullable=False)
     intro = db.Column(db.String(300), unique=True, nullable=False)
     thumbnail = db.Column(db.String(100), nullable=False, default='default.jpg')
     location = db.Column(db.Enum(Location), nullable=False, default=Location.unknown)
+    display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
+
     status = db.Column(db.Enum(Status), nullable=False, default=Status.CREATED)
     timestamp = db.Column(db.DateTime(), default=datetime.now)
-    display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
+
     articles = db.relationship('Article', backref='plant', lazy='dynamic', cascade='all, delete-orphan')
+
     def __repr__(self):
         return f'<Plant {self.name}>'
 
 class Article(db.Model):
     __tablename__ = 'articles'
+
     id = db.Column(db.Integer, primary_key=True)
+
     text = db.Column(db.Text, nullable=False, unique=True)
     photo = db.Column(db.String(100), nullable=True, default='default.jpg')  
     composition = db.Column(db.Enum(Composition), nullable=False, default=Composition.img_top)
+    display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
     plant_id = db.Column(db.Integer, db.ForeignKey('plants.id', ondelete='CASCADE'), nullable=False)
+
     status = db.Column(db.Enum(Status), nullable=False, default=Status.CREATED)
     timestamp = db.Column(db.DateTime, default=datetime.now)
-    display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
+    
     def __repr__(self):
         return f'<Article {self.id}>'
 

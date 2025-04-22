@@ -1,0 +1,15 @@
+[
+    {
+        "name": "Гинкго билоба",
+        "category": "Деревья",
+        "code": "1.5",
+        "intro": "Дерево, пережившее динозавров, древний ключ к ясности ума.",
+        "thumbnail": "default.jpg",
+        "location": "1",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814250"
+
+    }
+
+]

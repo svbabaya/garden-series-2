@@ -5,13 +5,12 @@ from garden.forms import MessageForm
 
 from sqlalchemy.sql.expression import func
 
-import random
 # import jsonify
 
 # admin endpoints
 @app.route('/admin/')
 def open_admin_page():
-    return render_template('admin.html')
+    return render_template('admin/admin.html')
 
 @app.route('/admin/message/', methods=('POST', 'GET'))
 def create_message():
@@ -33,17 +32,33 @@ def create_message():
 
         flash('New message created successful')
         return redirect(url_for('open_admin_page'))
-    return render_template('message.html', form=form)
+    return render_template('admin/message.html', form=form)
 
 @app.route('/admin/messages/')
 def show_all_messages():
     messages = Message.query.all()
-    return render_template('messages.html', messages=messages)
+    return render_template('admin/messages.html', messages=messages)
 
 # ToDo make edit form for message
-# @app.route('/admin/message/<int:message_id>', methods=('GET', 'PATCH'))
-# def edit_message(message_id):
-#     return 'Open edit form for message'
+@app.route('/admin/message/<int:message_id>', methods=('GET', 'PATCH'))
+def edit_message(message_id):
+    return 'Open edit form for message'
+
+@app.route('/admin/plant/', methods=('POST', 'GET'))
+def create_plant():
+    return 'Form of plant creation'
+
+@app.route('/admin/plants/')
+def show_all_plants():
+    return 'All plants list'
+
+# ToDo make edit form for plant
+@app.route('/admin/plant/<int:plant_id>', methods=('GET', 'PATCH'))
+def edit_plant(plant_id):
+    return 'Open edit form for plant'
+
+
+
 
 
 @app.route('/')
