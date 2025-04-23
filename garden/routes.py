@@ -1,9 +1,15 @@
-from flask import request, session, render_template, redirect, url_for, flash, send_from_directory
+from flask import request, session, render_template, redirect, url_for, flash
 from garden import app, db
 from garden.models import Message, Display, Category, Plant
 from garden.forms import MessageForm, PlantForm
 
 from sqlalchemy.sql.expression import func
+
+import os
+from flask import current_app, send_from_directory, abort
+from werkzeug.utils import secure_filename
+
+# from pathlib import Path
 
 # import jsonify
 
@@ -104,7 +110,7 @@ def show_category_list(category_name):
                                 Plant.status != 'DELETED',
                                 Plant.display == 'enabled')
     return render_template('category.html', 
-                           category_title=Category[category_name].value,
+                           category_title=Category[category_name].value['title'],
                            plants=plants)
 
 @app.route('/plants/<plant_id>/')
@@ -118,10 +124,39 @@ def open_details_plant(plant_id):
                            category_name=plant.category.name)
 
 
-@app.route('/uploads/<filename>')
-def send_file(filename):
-	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+# @app.route('/uploads/<path:filename>')  # Обратите внимание на <path:filename>
+# def send_file(filename):
+#     # Безопасная обработка имени файла
+#     safe_filename = secure_filename(os.path.basename(filename))
+#     directory = os.path.dirname(filename)
+#     print(safe_filename)
+#     print(directory)
+    
+#     # Полный путь к файлу
+#     file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], directory, safe_filename)
+    
+#     # Проверка существования файла
+#     if not os.path.exists(file_path):
+#         current_app.logger.error(f"File not found: {file_path}")
+#         abort(404)
+    
+#     # Проверка что файл находится внутри UPLOAD_FOLDER (безопасность)
+#     try:
+#         file_path = os.path.realpath(file_path)
+#         upload_folder = os.path.realpath(current_app.config['UPLOAD_FOLDER'])
+#         if not file_path.startswith(upload_folder):
+#             abort(403)
+#     except:
+#         abort(400)
+    
+#     # Отправка файла
+#     return send_from_directory(
+#         os.path.join(current_app.config['UPLOAD_FOLDER'], directory),
+#         safe_filename)
 
+@app.route('/uploads/<path:filename>')
+def send_file(filename):
+    return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
 
 # ToDo export db to json
 # @app.route('/export/messages/')
