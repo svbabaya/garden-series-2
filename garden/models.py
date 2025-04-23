@@ -1,12 +1,6 @@
 from garden import db
 from datetime import datetime
 import enum
-# from sqlalchemy.orm import Mapped, mapped_column
-# from sqlalchemy import Integer, String, Enum, DateTime
-# from sqlalchemy.ext.declarative import declarative_base
-# from dataclasses import dataclass
-
-# Base = declarative_base() 
 
 class Status(enum.Enum):
     CREATED = 1
@@ -14,13 +8,13 @@ class Status(enum.Enum):
     DELETED = 3
 
 class Category(enum.Enum):
-    tree = 'Деревья'
-    fruit_tree = 'Плодовые деревья'
-    bush = 'Кустарники'
-    fruit_bush = 'Плодовые кустарники'
-    herb_perennial_ornamental_plant = 'Многолетние декоративные'
-    herb_annual_ornamental_plant = 'Однолетние декоративные'
-    herb_perennial_wild_plant = 'Многолетние дикорастущие'  
+    tree = {'title': 'Деревья', 'category_dir': '1'}
+    fruit_tree = {'title': 'Плодовые деревья', 'category_dir': '2'}
+    bush = {'title': 'Кустарники', 'category_dir': '3'}
+    fruit_bush = {'title': 'Плодовые кустарники', 'category_dir': '4'}
+    herb_perennial_ornamental_plant = {'title': 'Травянистые многолетние декоративные', 'category_dir': '5'}
+    herb_annual_ornamental_plant = {'title': 'Травянистые однолетние декоративные', 'category_dir': '6'}
+    herb_perennial_wild_plant = {'title': 'Травянистые многолетние дикорастущие', 'category_dir': '7'} 
 
 class Location(enum.Enum):
     unknown = 0 
@@ -102,28 +96,3 @@ class Message(db.Model):
     
     def __repr__(self):
         return f'<Message {self.id}>'
-
-
-# class Message(Base):
-#     __tablename__ = 'messages'
-
-#     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-#     text: Mapped[str] = mapped_column(String(400), unique=True, nullable=False)
-#     author: Mapped[str] = mapped_column(String(100), nullable=False)
-#     priority: Mapped[str] = mapped_column(Enum(Priority), nullable=False, default=Priority.low)
-#     display: Mapped[str] = mapped_column(Enum(Display), nullable=False, default=Display.disabled)
-#     status: Mapped[str] = mapped_column(Enum(Status), nullable=False, default=Status.CREATED)
-#     timestamp: Mapped[str] = mapped_column(DateTime, default=datetime.now)
-    
-#     def __repr__(self):
-#         return f'<Message {self.id}>'
-    
-# @dataclass
-# class Message(Base):
-#     id: int
-#     text: str
-#     author: str
-#     priority: str
-#     display: str
-#     status: str
-#     timestamp: str
