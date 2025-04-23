@@ -1,15 +1,43 @@
 [
     {
         "name": "Гинкго билоба",
-        "category": "Деревья",
+        "category": "tree",
         "code": "1.5",
         "intro": "Дерево, пережившее динозавров, древний ключ к ясности ума.",
         "thumbnail": "default.jpg",
-        "location": "1",
+        "location": "zone_1",
         "display": "enabled",
         "status": "CREATED",
         "timestamp": "2025-04-21 22:09:40.814250"
 
+    },
+
+    {
+        "name": "Клён ясенелистный",
+        "category": "tree",
+        "code": "1.11",
+        "intro": "Ботанический иммигрант №1: из декоративного саженца — в злостного захватчика.",
+        "thumbnail": "default.jpg",
+        "location": "zone_2",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814251"
+
+    },
+
+    {
+        "name": "Орех манчжурский",
+        "category": "tree",
+        "code": "1.13",
+        "intro": "Это не просто дерево — это характер, история и магия Дальнего Востока.",
+        "thumbnail": "default.jpg",
+        "location": "zone_3",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
     }
+
+
 
 ]

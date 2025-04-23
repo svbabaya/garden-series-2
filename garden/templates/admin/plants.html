@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Garden admin{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for plant in plants %}
+    <p>{{ plant.id }}</p>
+    <p>{{ plant.name }}</p>
+    <p>{{ plant.category }}</p>
+    <p>{{ plant.code }}</p>
+    <p>{{ plant.intro }}</p>
+    <p>{{ plant.thumbnail }}</p>
+    <p>{{ plant.location }}</p>
+    <p>{{ plant.display }}</p>
+    <p>{{ plant.status }}</p>
+    <p>{{ plant.timestamp }}</p>
+    <button type="button">
+      <a href="{{ url_for('edit_plant', plant_id=plant.id) }}">Edit</a>
+    </button>
+    <hr>
+  {% endfor %}
+  <div class="btn-back">
+    <a href="{{ url_for('open_admin_page') }}">Back</a>
+  </div>
+{% endblock %}

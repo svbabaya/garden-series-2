@@ -1,13 +1,13 @@
 from flask import request, session, render_template, redirect, url_for, flash, send_from_directory
 from garden import app, db
-from garden.models import Message, Display, Category
-from garden.forms import MessageForm
+from garden.models import Message, Display, Category, Plant
+from garden.forms import MessageForm, PlantForm
 
 from sqlalchemy.sql.expression import func
 
 # import jsonify
 
-# admin endpoints
+### admin endpoints
 @app.route('/admin/')
 def open_admin_page():
     return render_template('admin/admin.html')
@@ -19,10 +19,12 @@ def create_message():
         text = form.text.data
         author = form.author.data
         priority = form.priority.data
+        
         if form.display.data == True:
             display = Display.enabled
         else: 
             display = Display.disabled
+
         message = Message(text=text, 
                           author=author, 
                           priority=priority, 
@@ -46,11 +48,38 @@ def edit_message(message_id):
 
 @app.route('/admin/plant/', methods=('POST', 'GET'))
 def create_plant():
-    return 'Form of plant creation'
+    form = PlantForm(request.form)
+    if request.method == 'POST' and form.validate():
+        name = form.name.data
+        category = form.category.data
+        code = form.code.data
+        intro = form.intro.data
+        thumbnail = form.thumbnail.data
+        location = form.location.data
+
+        if form.display.data == True:
+            display = Display.enabled
+        else: 
+            display = Display.disabled
+
+        plant = Plant(name=name,
+                      category=category,
+                      code=code,
+                      intro=intro,
+                      thumbnail=thumbnail,
+                      location=location,
+                      display=display)
+        db.session.add(plant)
+        db.session.commit()
+
+        flash('New plant created successful')
+        return redirect(url_for('open_admin_page'))
+    return render_template('admin/plant.html', form=form)
 
 @app.route('/admin/plants/')
 def show_all_plants():
-    return 'All plants list'
+    plants = Plant.query.all()
+    return render_template('admin/plants.html', plants=plants)
 
 # ToDo make edit form for plant
 @app.route('/admin/plant/<int:plant_id>', methods=('GET', 'PATCH'))
@@ -60,7 +89,7 @@ def edit_plant(plant_id):
 
 
 
-
+### view endpoints
 @app.route('/')
 @app.route('/index/')
 def index():
@@ -69,15 +98,29 @@ def index():
                                            Message.display == 'enabled').order_by(func.random()).first()
     return render_template ('index.html', message=current_message, categories=Category)
 
-@app.route('/plants/<category_name>/')
+@app.route('/plants/category/<category_name>/')
 def show_category_list(category_name):
-    # ToDo get list of plants
-    print('Get list of plants')
-    return render_template('category.html', category_title=Category[category_name].value)
+    plants = Plant.query.filter(Plant.category == category_name,
+                                Plant.status != 'DELETED',
+                                Plant.display == 'enabled')
+    return render_template('category.html', 
+                           category_title=Category[category_name].value,
+                           plants=plants)
+
+@app.route('/plants/<plant_id>/')
+def open_details_plant(plant_id):
+    plant = Plant.query.filter(Plant.id == plant_id).first()
+
+    # ToDo get all articles about current plant and send to template
+    
+    return render_template('item.html', 
+                           plant_name=plant.name, 
+                           category_name=plant.category.name)
 
 
-
-
+@app.route('/uploads/<filename>')
+def send_file(filename):
+	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
 # ToDo export db to json

@@ -6,10 +6,17 @@
 
 {% block content %}
 
-
+{% for plant in plants %}
+    <p>{{ plant.name }}</p>
+    <p>{{ plant.intro }}</p>
+    <p>{{ plant.thumbnail }}</p>
+    <div class="btn-detail">
+        <a href="{{ url_for('open_details_plant', plant_id=plant.id) }}">Details</a>
+    </div>
+{% endfor %}
 
 <div class="btn-back">
-    <a href="{{ url_for('index') }}">Back</a>
+    <a href="{{ url_for('index') }}">Back home</a>
 </div>
 
 {% endblock %}

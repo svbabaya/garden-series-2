@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}{{ plant_name }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<p>Details</p>
+
+<div class="btn-back">
+    <a href="{{ url_for('show_category_list', category_name=category_name) }}">Back categories</a>
+</div>
+
+<div class="btn-back">
+    <a href="{{ url_for('index') }}">Back home</a>
+</div>
+
+{% endblock %}
