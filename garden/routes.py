@@ -131,8 +131,8 @@ def open_map(plant_id):
 
     return render_template('location.html',
                            plant_name=plant.name,
-                           category_name=plant.category.name)
-
+                           category_name=plant.category.name,
+                           location=plant.location.value)
 
 # @app.route('/uploads/<path:filename>')  # Обратите внимание на <path:filename>
 # def send_file(filename):
