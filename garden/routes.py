@@ -121,14 +121,12 @@ def open_details_plant(plant_id):
     
     return render_template('item.html', 
                            plant_name=plant.name, 
-                           category_name=plant.category.name)
+                           category_name=plant.category.name,
+                           plant_id=plant.id)
 
 @app.route('/plant/<plant_id>/location')
 def open_map(plant_id):
     plant = Plant.query.filter(Plant.id == plant_id).first()
-
-    #ToDo get location code and send to template
-
     return render_template('location.html',
                            plant_name=plant.name,
                            category_name=plant.category.name,
