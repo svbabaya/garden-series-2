@@ -17,8 +17,11 @@
         <p>{{ plant.name }}</p>
         <p>{{ plant.intro }}</p>
 
-        <div class="btn-detail">
+        <div class="btn-card__detail">
             <a href="{{ url_for('open_details_plant', plant_id=plant.id) }}">Details</a>
+        </div>
+        <div class="btn-card__location">
+            <a href="{{ url_for('open_map', plant_id=plant.id) }}">Location</a>
         </div>
 
     </div>
