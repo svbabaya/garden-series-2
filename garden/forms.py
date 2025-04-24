@@ -18,9 +18,9 @@ class PlantForm(FlaskForm):
                                                   ('fruit_tree', 'fruit_tree'), 
                                                   ('bush', 'bush'),
                                                   ('fruit_bush', 'fruit_bush'), 
-                                                  ('herb_perennial_ornamental_plant', 'herb_perennial_ornamental_plant'),
-                                                  ('herb_annual_ornamental_plant', 'herb_annual_ornamental_plant'),
-                                                  ('herb_perennial_wild_plant', 'herb_perennial_wild_plant')])
+                                                  ('herb_perennial_ornamental', 'herb_perennial_ornamental'),
+                                                  ('herb_annual_ornamental', 'herb_annual_ornamental'),
+                                                  ('herb_perennial_wild', 'herb_perennial_wild')])
     code = StringField('code', validators=[DataRequired(), Length(min=3, max=10)])
     intro = TextAreaField('intro', validators=[DataRequired(), Length(min=30, max=300)])
     thumbnail = StringField('thumbnail', validators=[DataRequired(), Length(min=5, max=50)])

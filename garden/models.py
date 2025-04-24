@@ -12,9 +12,9 @@ class Category(enum.Enum):
     fruit_tree = {'title': 'Плодовые деревья', 'category_dir': '2'}
     bush = {'title': 'Кустарники', 'category_dir': '3'}
     fruit_bush = {'title': 'Плодовые кустарники', 'category_dir': '4'}
-    herb_perennial_ornamental_plant = {'title': 'Травянистые многолетние декоративные', 'category_dir': '5'}
-    herb_annual_ornamental_plant = {'title': 'Травянистые однолетние декоративные', 'category_dir': '6'}
-    herb_perennial_wild_plant = {'title': 'Травянистые многолетние дикорастущие', 'category_dir': '7'} 
+    herb_perennial_ornamental = {'title': 'Травянистые многолетние декоративные', 'category_dir': '5'}
+    herb_annual_ornamental = {'title': 'Травянистые однолетние декоративные', 'category_dir': '6'}
+    herb_perennial_wild = {'title': 'Травянистые многолетние дикорастущие', 'category_dir': '7'} 
 
 class Location(enum.Enum):
     unknown = 0 

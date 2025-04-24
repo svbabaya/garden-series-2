@@ -13,6 +13,8 @@ from werkzeug.utils import secure_filename
 
 # import jsonify
 
+
+
 ### admin endpoints
 @app.route('/admin/')
 def open_admin_page():
@@ -91,7 +93,6 @@ def show_all_plants():
 @app.route('/admin/plant/<int:plant_id>', methods=('GET', 'PATCH'))
 def edit_plant(plant_id):
     return 'Open edit form for plant'
-
 
 
 

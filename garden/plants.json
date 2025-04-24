@@ -4,7 +4,7 @@
         "category": "tree",
         "code": "1.5",
         "intro": "Дерево, пережившее динозавров, древний ключ к ясности ума.",
-        "thumbnail": "default.jpg",
+        "thumbnail": "plants/1/5/thumbnail.jpg",
         "location": "zone_1",
         "display": "enabled",
         "status": "CREATED",
@@ -17,7 +17,7 @@
         "category": "tree",
         "code": "1.11",
         "intro": "Ботанический иммигрант №1: из декоративного саженца — в злостного захватчика.",
-        "thumbnail": "default.jpg",
+        "thumbnail": "plants/1/11/thumbnail.jpg",
         "location": "zone_2",
         "display": "enabled",
         "status": "CREATED",
@@ -32,6 +32,45 @@
         "intro": "Это не просто дерево — это характер, история и магия Дальнего Востока.",
         "thumbnail": "default.jpg",
         "location": "zone_3",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Живучка ползучая",
+        "category": "herb_perennial_ornamental",
+        "code": "5.1.10",
+        "intro": "«Неубиваемый ковёр» – выживает в самых сложных условиях.",
+        "thumbnail": "plants/5/1/10/thumbnail.jpg",
+        "location": "zone_2",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Портулак",
+        "category": "herb_annual_ornamental",
+        "code": "5.2.8",
+        "intro": "Яркий, живучий, солнечный цветок, фейерверк красок.",
+        "thumbnail": "plants/5/2/8/thumbnail.jpg",
+        "location": "zone_5",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Марьянник",
+        "category": "herb_perennial_wild",
+        "code": "5.3.9",
+        "intro": "Ядовитый, но очаровательный полупаразит с огненной расцветкой.",
+        "thumbnail": "plants/5/3/9/thumbnail.jpg",
+        "location": "zone_4",
         "display": "enabled",
         "status": "CREATED",
         "timestamp": "2025-04-21 22:09:40.814252"
