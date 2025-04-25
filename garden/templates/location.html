@@ -12,7 +12,10 @@
 
 <nav class="nav-buttons">
     <div class="btn-back">
-        <a href="{{ url_for('show_category_list', category_name=category_name) }}">Back category</a>
+        <a href="{{ url_for('show_plant', plant_id=plant_id) }}">Back {{ plant_name }}</a>
+    </div>
+    <div class="btn-back">
+        <a href="{{ url_for('show_category', category_name=category.name) }}">Back {{ category.value['title'] }}</a>
     </div>
     <div class="btn-back">
         <a href="{{ url_for('index') }}">Back home</a>

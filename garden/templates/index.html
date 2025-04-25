@@ -9,10 +9,10 @@
   <p class="message__author">{{ message.author|safe }}</p>
 </section>
 
-<section class="category-list">
+<section class="categories">
   {% for category in categories %}
     <div class="btn-category">
-      <a href="{{ url_for('show_category_list', category_name=category.name) }}">{{ category.value['title'] }}</a>
+      <a href="{{ url_for('show_category', category_name=category.name) }}">{{ category.value['title'] }}</a>
     </div>
   {% endfor %}
 </section>

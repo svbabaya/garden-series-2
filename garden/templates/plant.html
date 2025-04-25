@@ -11,12 +11,12 @@
 </section>
 
 <div class="btn-location">
-    <a href="{{ url_for('open_map', plant_id=plant_id) }}">Location</a>
+    <a href="{{ url_for('show_map', plant_id=plant_id) }}">Location</a>
 </div>
 
 <nav class="nav-buttons">
     <div class="btn-back">
-        <a href="{{ url_for('show_category_list', category_name=category_name) }}">Back category</a>
+        <a href="{{ url_for('show_category', category_name=category.name) }}">Back {{ category.value['title'] }}</a>
     </div>
     <div class="btn-back">
         <a href="{{ url_for('index') }}">Back home</a>

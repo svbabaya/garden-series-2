@@ -111,7 +111,7 @@ def index():
                             settings=settings)
 
 @app.route('/plants/category/<category_name>/')
-def show_category_list(category_name):
+def show_category(category_name):
     plants = Plant.query.filter(Plant.category == category_name,
                                 Plant.status != 'DELETED',
                                 Plant.display == 'enabled')
@@ -121,23 +121,25 @@ def show_category_list(category_name):
                            settings=settings)
 
 @app.route('/plants/<plant_id>/')
-def open_details_plant(plant_id):
+def show_plant(plant_id):
     plant = Plant.query.filter(Plant.id == plant_id).first()
 
     # ToDo get all articles about current plant and send to template
-    
-    return render_template('item.html', 
+
+    return render_template('plant.html',
+                           plant_id=plant.id, 
                            plant_name=plant.name, 
-                           category_name=plant.category.name,
-                           plant_id=plant.id,
+                           category=plant.category,
                            settings=settings)
 
+
 @app.route('/plant/<plant_id>/location')
-def open_map(plant_id):
+def show_map(plant_id):
     plant = Plant.query.filter(Plant.id == plant_id).first()
     return render_template('location.html',
+                           plant_id=plant.id,
                            plant_name=plant.name,
-                           category_name=plant.category.name,
+                           category=plant.category,
                            location=plant.location.value,
                            settings=settings)
 
