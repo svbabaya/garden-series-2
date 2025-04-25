@@ -30,8 +30,47 @@
         "category": "tree",
         "code": "1.13",
         "intro": "Это не просто дерево — это характер, история и магия Дальнего Востока.",
-        "thumbnail": "default.jpg",
+        "thumbnail": "plants/1/13/thumbnail.jpg",
         "location": "zone_3",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Груша",
+        "category": "fruit_tree",
+        "code": "2.1",
+        "intro": "Загляни под осень в сад – колокольчики висят: бронзовые, медные, животу не вредные.",
+        "thumbnail": "plants/2/1/thumbnail.jpg",
+        "location": "zone_3",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Лапчатка",
+        "category": "bush",
+        "code": "3.8",
+        "intro": "В германских преданиях её называли «следом фей» – считалось, что она растёт там, где танцевали лесные духи",
+        "thumbnail": "plants/3/8/thumbnail.jpg",
+        "location": "zone_1",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Неспель (Ирга)",
+        "category": "fruit_bush",
+        "code": "4.3",
+        "intro": "«Северный виноград»",
+        "thumbnail": "plants/4/3/thumbnail.jpg",
+        "location": "zone_4",
         "display": "enabled",
         "status": "CREATED",
         "timestamp": "2025-04-21 22:09:40.814252"

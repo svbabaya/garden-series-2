@@ -10,16 +10,22 @@ ToDo
 3. Add export db to json
 4. Add exceptions (db, json, images)
 5. Add Flask_upload for files
-6. Add settings.json or .py
+OK 6. Add settings.json
 7. Make sceme of models in README
-
-8. Endpoint for edit message
 
 OK 9. Make buttons for categories on index.html
 10. Make design index.html
-11. Make plants.html for lists of plants
 
+12. Add number of plants in the each cathegory (index.html and cathegory.html)
 
+13. Make functions CRUD (get all plants, get cathegory plants, get one plant, get number plants,
+create plant, create article, delete plant, delete article, create message, delete message, update plant, update message, update article)
+
+14. Add localization
+
+15. Add function for messages (priority handle)
+
+16. Make map, add pulse spot (video)
 
 
 
@@ -36,4 +42,4 @@ OK 9. Make buttons for categories on index.html
                 "timestamp": "2025-04-21 22:09:40.814250"
             }
         ]
-        
+

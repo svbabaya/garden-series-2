@@ -21,4 +21,4 @@ db = SQLAlchemy(app)
 with open(os.path.join(basedir, 'settings.json'), mode='r', encoding='utf-8') as read_file:
     settings = json.load(read_file)
 
-from garden import routes, models
+from garden import routes, models, services

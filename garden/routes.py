@@ -3,13 +3,13 @@ from garden import app, db
 from garden.models import Message, Display, Category, Plant
 from garden.forms import MessageForm, PlantForm
 
-from sqlalchemy.sql.expression import func
-
 from . import settings
 
 import os
 from flask import current_app, send_from_directory, abort
 from werkzeug.utils import secure_filename
+
+from . import services
 
 # from pathlib import Path
 
@@ -102,27 +102,28 @@ def edit_plant(plant_id):
 @app.route('/')
 @app.route('/index/')
 def index():
-    current_message = Message.query.filter(Message.priority == 'normal',
-                                           Message.status != 'DELETED',
-                                           Message.display == 'enabled').order_by(func.random()).first()
+    current_message = services.get_message_for_render()
+    quantities = services.get_quantity_categories()
     return render_template ('index.html', 
                             message=current_message, 
                             categories=Category,
+                            quantities=quantities,
+                            quantity=100,
                             settings=settings)
 
 @app.route('/plants/category/<category_name>/')
 def show_category(category_name):
-    plants = Plant.query.filter(Plant.category == category_name,
-                                Plant.status != 'DELETED',
-                                Plant.display == 'enabled')
+    plants = services.get_category_plants_for_render(category_name)
     return render_template('category.html', 
                            category_title=Category[category_name].value['title'],
                            plants=plants,
+                        #    quantity=services.get_quantity(plants),
+                           quantity=services.get_quantity_categories()[category_name],
                            settings=settings)
 
 @app.route('/plants/<plant_id>/')
 def show_plant(plant_id):
-    plant = Plant.query.filter(Plant.id == plant_id).first()
+    plant = services.get_plant(plant_id)
 
     # ToDo get all articles about current plant and send to template
 
@@ -135,7 +136,7 @@ def show_plant(plant_id):
 
 @app.route('/plant/<plant_id>/location')
 def show_map(plant_id):
-    plant = Plant.query.filter(Plant.id == plant_id).first()
+    plant = services.get_plant(plant_id)
     return render_template('location.html',
                            plant_id=plant.id,
                            plant_name=plant.name,
