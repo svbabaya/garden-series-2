@@ -19,6 +19,11 @@ OK 9. Make buttons for categories on index.html
 10. Make design index.html
 11. Make plants.html for lists of plants
 
+
+
+
+
+
         "articles": 
         [
             {
@@ -31,3 +36,4 @@ OK 9. Make buttons for categories on index.html
                 "timestamp": "2025-04-21 22:09:40.814250"
             }
         ]
+        

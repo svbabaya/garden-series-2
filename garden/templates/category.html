@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}{{ category_title }}{% endblock %}</h1>
-{% endblock %}
+{% block main %}
 
-{% block content %}
+<h2>{{ category_title }}</h2>
 
-{% for plant in plants %}
+<section class="cards">
+    {% for plant in plants %}
 
     <div class="card">
 
@@ -26,10 +25,13 @@
 
     </div>
 
-{% endfor %}
+    {% endfor %}
+</section>
 
-<div class="btn-back">
-    <a href="{{ url_for('index') }}">Back home</a>
-</div>
+<nav class="nav-buttons">
+    <div class="btn-back">
+        <a href="{{ url_for('index') }}">Back home</a>
+    </div>
+</nav>
 
 {% endblock %}

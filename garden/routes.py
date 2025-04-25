@@ -5,6 +5,8 @@ from garden.forms import MessageForm, PlantForm
 
 from sqlalchemy.sql.expression import func
 
+from . import settings
+
 import os
 from flask import current_app, send_from_directory, abort
 from werkzeug.utils import secure_filename
@@ -103,7 +105,10 @@ def index():
     current_message = Message.query.filter(Message.priority == 'normal',
                                            Message.status != 'DELETED',
                                            Message.display == 'enabled').order_by(func.random()).first()
-    return render_template ('index.html', message=current_message, categories=Category)
+    return render_template ('index.html', 
+                            message=current_message, 
+                            categories=Category,
+                            settings=settings)
 
 @app.route('/plants/category/<category_name>/')
 def show_category_list(category_name):
@@ -112,7 +117,8 @@ def show_category_list(category_name):
                                 Plant.display == 'enabled')
     return render_template('category.html', 
                            category_title=Category[category_name].value['title'],
-                           plants=plants)
+                           plants=plants,
+                           settings=settings)
 
 @app.route('/plants/<plant_id>/')
 def open_details_plant(plant_id):
@@ -123,7 +129,8 @@ def open_details_plant(plant_id):
     return render_template('item.html', 
                            plant_name=plant.name, 
                            category_name=plant.category.name,
-                           plant_id=plant.id)
+                           plant_id=plant.id,
+                           settings=settings)
 
 @app.route('/plant/<plant_id>/location')
 def open_map(plant_id):
@@ -131,7 +138,8 @@ def open_map(plant_id):
     return render_template('location.html',
                            plant_name=plant.name,
                            category_name=plant.category.name,
-                           location=plant.location.value)
+                           location=plant.location.value,
+                           settings=settings)
 
 # @app.route('/uploads/<path:filename>')  # Обратите внимание на <path:filename>
 # def send_file(filename):

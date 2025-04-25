@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}{{ plant_name }}{% endblock %}</h1>
-{% endblock %}
+{% block main %}
 
-{% block content %}
+<h2>{{ plant_name }}</h2>
 
-<p>Plant details</p>
+<section class="articles">
 
-<div class="btn-card__location">
+    <p>Articles about plant</p>
+
+</section>
+
+<div class="btn-location">
     <a href="{{ url_for('open_map', plant_id=plant_id) }}">Location</a>
 </div>
 
-<div class="btn-back">
-    <a href="{{ url_for('show_category_list', category_name=category_name) }}">Back category</a>
-</div>
-
-<div class="btn-back">
-    <a href="{{ url_for('index') }}">Back home</a>
-</div>
+<nav class="nav-buttons">
+    <div class="btn-back">
+        <a href="{{ url_for('show_category_list', category_name=category_name) }}">Back category</a>
+    </div>
+    <div class="btn-back">
+        <a href="{{ url_for('index') }}">Back home</a>
+    </div>
+</nav>
 
 {% endblock %}

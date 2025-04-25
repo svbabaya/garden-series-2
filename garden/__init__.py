@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import json
 import os
 
 app = Flask(__name__)
@@ -18,5 +19,9 @@ app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'uploads')
 app.config['UPLOAD_ALLOWED_EXTENSIONS'] = {'jpg', 'jpeg', 'png', 'gif'}
 
 db = SQLAlchemy(app)
+
+with open(os.path.join(basedir, 'settings.json'), mode='r', encoding='utf-8') as read_file:
+    settings = json.load(read_file)
+    print(settings)
 
 from garden import routes, models

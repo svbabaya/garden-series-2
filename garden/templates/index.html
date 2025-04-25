@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Garden{% endblock %}</h1>
-{% endblock %}
+{% block main %}
 
-{% block content %}
+<h1 class="main-title">{{ settings['main_title'] }}</h1>
 
-<div class="message">
+<section class="message">
   <p class="message__text">{{ message.text|safe }}</p>
   <p class="message__author">{{ message.author|safe }}</p>
-</div>
+</section>
 
-{% for category in categories %}
-  <div class="btn-category">
-    <a href="{{ url_for('show_category_list', category_name=category.name) }}">{{ category.value['title'] }}</a>
-  </div>
-{% endfor %}
-
+<section class="category-list">
+  {% for category in categories %}
+    <div class="btn-category">
+      <a href="{{ url_for('show_category_list', category_name=category.name) }}">{{ category.value['title'] }}</a>
+    </div>
+  {% endfor %}
+</section>
 
 {% endblock %}
