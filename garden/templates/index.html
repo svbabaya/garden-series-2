@@ -15,7 +15,7 @@
   {% for category in categories %}
 
     <a href="{{ url_for('show_category', category_name=category.name) }}" class="category-button">
-      <img src="../static/icons/icon_btn_02.png" alt="Icon" width="40" height="40">
+      <img src="{{ url_for('static', filename='icons/icon_btn_02.png') }}" alt="Icon" width="40" height="40">
       <span>{{ category.value['title'] }} ({{ quantities[category.name] }})</span>
     </a>
 

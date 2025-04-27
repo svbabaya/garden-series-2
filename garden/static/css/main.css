@@ -85,3 +85,26 @@ main {
 /* .category-button img {
     vertical-align: middle;
 } */
+
+
+/* category.html */
+
+
+
+
+/* location.html */
+.map img {
+    width: 330px;
+}
+
+.location {
+    position: relative
+}
+
+.location video {
+    position: absolute;
+    top: 110px;
+    left: 50px;
+}
+
+

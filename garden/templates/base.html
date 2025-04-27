@@ -25,7 +25,7 @@
 </head>
 
 <body>
-  <img src="../static/footer-bg.png" alt="Bottom-image" class="bottom-image">
+  <img src="{{ url_for('static', filename='footer-bg.png') }}" alt="Image-footer" class="bottom-image">
 
 <header>
   <p class="header-text source-sans-3-400">{{ settings['site_header'] }}</p>

@@ -4,9 +4,17 @@
 
 <h2>{{ plant_name }}</h2>
 
+<p>Zone: {{ location }}</p>
+
 <section class="location">
 
-    <p>Zone: {{ location }}</p>
+    <div class="map">
+        <img src="{{ url_for('static', filename='map.svg') }}" alt="Image-map">
+    </div>
+
+    <video autoplay muted loop>
+        <source src="{{ url_for('static', filename='spot.webm') }}" type="video/mp4">
+    </video>
 
 </section>
 
