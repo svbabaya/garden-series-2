@@ -88,23 +88,110 @@ main {
 
 
 /* category.html */
+.subtitle {
+    font-size: 24px;
+    color: #3A4A2F;
+    margin-bottom: 10px;
+}
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.card {
+    width: 320px;
+    height: 380px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    /* bow-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); */
+    margin: 10px;
+    padding-top: 10px;
+    position: relative;
+    text-align: center;
+}
+.card img {
+    width: 300px;
+    height: auto;
+}
+.card-content {
+    padding: 10px;
+    text-align: left;
+}
+.card-content h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.card-content p {
+    font-size: 16px;
+    line-height: 1.3;
+}
+.card-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    background: #d9d9d9;
+    color: #212121;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background 0.3s;
+    margin: 0 5px 10px 0;
+}
+.card-button:hover {
+    background: #cacaca;
+}
+.card-button span {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+.button-container {
+    position: absolute;
+    bottom: 10px;
+}
+
+/* navigation buttons */
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    background: #d9d9d9;
+    color: #212121;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background 0.3s;
+    margin: 0 10px 10px 0;
+}
+.nav-button:hover {
+    background: #cacaca;
+}
+.nav-button span {
+    padding: 0 10px 0 10px;
+    font-size: 14px;
+}
+
+/* plants.html */
+.article-container {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
 
 
 
 
 /* location.html */
 .map img {
-    width: 330px;
+    width: 300px;
 }
-
 .location {
-    position: relative
+    position: relative;
+    margin-bottom: 30px;
 }
-
 .location video {
     position: absolute;
     top: 110px;
     left: 50px;
 }
-
-

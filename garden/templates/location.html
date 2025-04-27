@@ -2,14 +2,18 @@
 
 {% block main %}
 
-<h2>{{ plant_name }}</h2>
+<div class="subtitle">
+    <h2 class="montserrat-alternates-semibold">{{ plant_name }}</h2>
+</div>
 
-<p>Zone: {{ location }}</p>
+<section class="location-info">
+    <p class="source-sans-3-400">{{ plant_name }} находится в зоне {{ location }}</p>
+</section>
 
 <section class="location">
 
     <div class="map">
-        <img src="{{ url_for('static', filename='map.svg') }}" alt="Image-map">
+        <img src="{{ url_for('static', filename='map.png') }}" alt="Image-map">
     </div>
 
     <video autoplay muted loop>
@@ -19,15 +23,15 @@
 </section>
 
 <nav class="nav-buttons">
-    <div class="btn-back">
-        <a href="{{ url_for('show_plant', plant_id=plant_id) }}">Back {{ plant_name }}</a>
-    </div>
-    <div class="btn-back">
-        <a href="{{ url_for('show_category', category_name=category.name) }}">Back {{ category.value['title'] }}</a>
-    </div>
-    <div class="btn-back">
-        <a href="{{ url_for('index') }}">Back home</a>
-    </div>
+    <a href="{{ url_for('show_plant', plant_id=plant_id) }}" class="nav-button">
+        <span class="montserrat-alternates-medium">{{ plant_name }}</span>
+    </a>
+    <a href="{{ url_for('show_category', category_name=category.name) }}" class="nav-button">
+        <span class="montserrat-alternates-medium">{{ category.value['title'] }}</span>
+    </a>
+    <a href="{{ url_for('index') }}" class="nav-button">
+        <span class="montserrat-alternates-medium">{{ settings['home_name'] }}</span>
+    </a>
 </nav>
 
 {% endblock %}

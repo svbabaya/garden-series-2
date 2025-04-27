@@ -2,25 +2,30 @@
 
 {% block main %}
 
-<h2>{{ category_title }} ({{ quantity }})</h2>
+<div class="subtitle">
+    <h2 class="montserrat-alternates-semibold">{{ category_title }} ({{ quantity }})</h2>
+</div>
 
-<section class="cards">
+<section class="card-container">
     {% for plant in plants %}
 
     <div class="card">
+        <img class="card-img" src="{{ url_for('send_file', filename=plant.thumbnail) }}" alt="Image">
 
-        <div class="card__thumbnail">
-            <img class="card-img" src="{{ url_for('send_file', filename=plant.thumbnail) }}" alt="Image">
-        </div>
+        <div class="card-content">
 
-        <p>{{ plant.name }}</p>
-        <p>{{ plant.intro }}</p>
+            <h3 class="montserrat-alternates-semibold">{{ plant.name }}</h3>
+            <p class="source-sans-3-400">{{ plant.intro }}</p>
 
-        <div class="btn-card__detail">
-            <a href="{{ url_for('show_plant', plant_id=plant.id) }}">Details</a>
-        </div>
-        <div class="btn-card__location">
-            <a href="{{ url_for('show_map', plant_id=plant.id) }}">Location</a>
+            <div class="button-container">
+                <a href="{{ url_for('show_plant', plant_id=plant.id) }}" class="card-button">
+                    <span class="montserrat-alternates-medium">{{ settings['details_name'] }}</span>
+                </a>
+                <a href="{{ url_for('show_map', plant_id=plant.id) }}" class="card-button">
+                    <span class="montserrat-alternates-medium">{{ settings['location_name'] }}</span>
+                </a>
+            </div>
+
         </div>
 
     </div>
@@ -29,9 +34,9 @@
 </section>
 
 <nav class="nav-buttons">
-    <div class="btn-back">
-        <a href="{{ url_for('index') }}">Back home</a>
-    </div>
+        <a href="{{ url_for('index') }}" class="nav-button">
+            <span class="montserrat-alternates-medium">{{ settings['home_name'] }}</span>
+        </a>
 </nav>
 
 {% endblock %}

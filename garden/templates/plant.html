@@ -2,25 +2,24 @@
 
 {% block main %}
 
-<h2>{{ plant_name }}</h2>
-
-<section class="articles">
-
-    <p>Articles about plant</p>
-
-</section>
-
-<div class="btn-location">
-    <a href="{{ url_for('show_map', plant_id=plant_id) }}">Location</a>
+<div class="subtitle">
+    <h2 class="montserrat-alternates-semibold">{{ plant_name }}</h2>
 </div>
 
+<section class="article-container">
+    <p class="source-sans-3-400">Здесь будет дополнительная информация.</p>
+</section>
+
 <nav class="nav-buttons">
-    <div class="btn-back">
-        <a href="{{ url_for('show_category', category_name=category.name) }}">Back {{ category.value['title'] }}</a>
-    </div>
-    <div class="btn-back">
-        <a href="{{ url_for('index') }}">Back home</a>
-    </div>
+    <a href="{{ url_for('show_map', plant_id=plant_id) }}" class="nav-button">
+        <span class="montserrat-alternates-medium">{{ settings['location_name'] }}</span>
+    </a>
+    <a href="{{ url_for('show_category', category_name=category.name) }}" class="nav-button">
+        <span class="montserrat-alternates-medium">{{ category.value['title'] }}</span>
+    </a>
+    <a href="{{ url_for('index') }}" class="nav-button">
+        <span class="montserrat-alternates-medium">{{ settings['home_name'] }}</span>
+    </a>
 </nav>
 
 {% endblock %}

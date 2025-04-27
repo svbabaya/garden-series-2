@@ -94,7 +94,7 @@
         "name": "Крыжовник",
         "category": "fruit_bush",
         "code": "4.1",
-        "intro": "",
+        "intro": "В Англии XVI века называли «гусиной ягодой» (gooseberry).",
         "thumbnail": "plants/4/1/thumbnail.jpg",
         "location": "zone_4",
         "display": "enabled",
