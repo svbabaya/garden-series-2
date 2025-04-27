@@ -52,12 +52,51 @@
     },
 
     {
+        "name": "Облепиха",
+        "category": "fruit_tree",
+        "code": "2.3",
+        "intro": "Солнечная ягода здоровья.",
+        "thumbnail": "plants/2/3/thumbnail.jpg",
+        "location": "zone_3",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
         "name": "Лапчатка",
         "category": "bush",
         "code": "3.8",
-        "intro": "В германских преданиях её называли «следом фей» – считалось, что она растёт там, где танцевали лесные духи",
+        "intro": "В германских преданиях её называли «следом фей» – считалось, что она растёт там, где танцевали лесные духи.",
         "thumbnail": "plants/3/8/thumbnail.jpg",
         "location": "zone_1",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Спирея",
+        "category": "bush",
+        "code": "3.15",
+        "intro": "В народе называют «невестой» за белоснежные цветы.",
+        "thumbnail": "plants/3/15/thumbnail.jpg",
+        "location": "zone_1",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Крыжовник",
+        "category": "fruit_bush",
+        "code": "4.1",
+        "intro": "",
+        "thumbnail": "plants/4/1/thumbnail.jpg",
+        "location": "zone_4",
         "display": "enabled",
         "status": "CREATED",
         "timestamp": "2025-04-21 22:09:40.814252"
@@ -68,9 +107,22 @@
         "name": "Неспель (Ирга)",
         "category": "fruit_bush",
         "code": "4.3",
-        "intro": "«Северный виноград»",
+        "intro": "«Северный виноград».",
         "thumbnail": "plants/4/3/thumbnail.jpg",
         "location": "zone_4",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Бадан",
+        "category": "herb_perennial_ornamental",
+        "code": "5.1.3",
+        "intro": "«Чигирский чай».",
+        "thumbnail": "plants/5/1/3/thumbnail.jpg",
+        "location": "zone_2",
         "display": "enabled",
         "status": "CREATED",
         "timestamp": "2025-04-21 22:09:40.814252"
@@ -84,6 +136,19 @@
         "intro": "«Неубиваемый ковёр» – выживает в самых сложных условиях.",
         "thumbnail": "plants/5/1/10/thumbnail.jpg",
         "location": "zone_2",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Бегония",
+        "category": "herb_annual_ornamental",
+        "code": "5.2.3",
+        "intro": "Предсказатель погоды - перед дождём на листьях выступают капли.",
+        "thumbnail": "plants/5/2/3/thumbnail.jpg",
+        "location": "zone_5",
         "display": "enabled",
         "status": "CREATED",
         "timestamp": "2025-04-21 22:09:40.814252"
@@ -110,6 +175,19 @@
         "intro": "Ядовитый, но очаровательный полупаразит с огненной расцветкой.",
         "thumbnail": "plants/5/3/9/thumbnail.jpg",
         "location": "zone_4",
+        "display": "enabled",
+        "status": "CREATED",
+        "timestamp": "2025-04-21 22:09:40.814252"
+
+    },
+
+    {
+        "name": "Тимофеевка",
+        "category": "herb_perennial_wild",
+        "code": "5.3.19",
+        "intro": "В Англии называют «кошачьим хвостом» (cat’s tail) из-за формы соцветия.",
+        "thumbnail": "plants/5/3/19/thumbnail.jpg",
+        "location": "zone_3",
         "display": "enabled",
         "status": "CREATED",
         "timestamp": "2025-04-21 22:09:40.814252"
