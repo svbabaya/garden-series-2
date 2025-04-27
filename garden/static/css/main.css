@@ -1,0 +1,87 @@
+body {
+    position: relative; /* Для корректного позиционирования absolute */
+    min-height: 100vh; /* Чтобы body был не меньше высоты экрана */
+}
+  
+.bottom-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+}  
+
+header {
+    height: 50px;
+    line-height: 50px;
+    background-color: #F5F7F0;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+header p {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+    color: #212121;
+}
+
+main {
+    padding: 0 10px 0 15px;
+    text-align: left;
+    font-size: 14px;
+    color: #212121;
+}
+
+.footer {
+    padding-left: 15px;
+    font-size: 14px;
+    color: #212121;
+    height: 280px;
+}
+
+
+/* index.html */
+
+.main-title {
+    font-size: 50px;
+    color: #3A4A2F;
+    margin-bottom: 20px;
+}
+
+.message__text {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.message__author {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.category-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    background: #d9d9d9;
+    color: #212121;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background 0.3s;
+    margin: 0 5px 10px 0;
+}
+  
+.category-button:hover {
+    background: #cacaca;
+}
+
+.category-button span {
+    padding-right: 10px;
+    font-size: 14px;
+}
+  
+/* .category-button img {
+    vertical-align: middle;
+} */

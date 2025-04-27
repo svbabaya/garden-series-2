@@ -2,18 +2,23 @@
 
 {% block main %}
 
-<h1 class="main-title">{{ settings['main_title'] }}</h1>
+<div class="main-title">
+  <h1 class="montserrat-alternates-extrabold">{{ settings['main_title'] }}</h1>
+</div>
 
 <section class="message">
-  <p class="message__text">{{ message.text|safe }}</p>
-  <p class="message__author">{{ message.author|safe }}</p>
+  <p class="message__text source-sans-3-400">{{ message.text|safe }}</p>
+  <p class="message__author caveat-400">{{ message.author|safe }}</p>
 </section>
 
-<section class="categories">
+<section class="categories montserrat-alternates-medium">
   {% for category in categories %}
-    <div class="btn-category">
-      <a href="{{ url_for('show_category', category_name=category.name) }}">{{ category.value['title'] }} ({{ quantities[category.name] }})</a>
-    </div>
+
+    <a href="{{ url_for('show_category', category_name=category.name) }}" class="category-button">
+      <img src="../static/icons/icon_btn_02.png" alt="Icon" width="40" height="40">
+      <span>{{ category.value['title'] }} ({{ quantities[category.name] }})</span>
+    </a>
+
   {% endfor %}
 </section>
 
