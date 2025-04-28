@@ -13,7 +13,7 @@ body {
 
 .site-container {
     flex-grow: 1;
-    background-image: url(../site_bg_02.svg);
+    background-image: url(../site_bg_02.png);
     background-position: left bottom;
     background-repeat: no-repeat;
 }

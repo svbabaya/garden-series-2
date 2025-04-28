@@ -16,8 +16,8 @@
         <img src="{{ url_for('static', filename='map.png') }}" alt="Image-map">
     </div>
 
-    <video autoplay muted loop>
-        <source src="{{ url_for('static', filename='spot.webm') }}" type="video/mp4">
+    <video autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline">
+        <source src="{{ url_for('static', filename='spot.webm') }}" type='video/webm'>
     </video>
 
 </section>

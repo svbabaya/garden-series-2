@@ -25,7 +25,9 @@ create plant, create article, delete plant, delete article, create message, dele
 
 15. Add function for messages (priority handle)
 
-16. Make map, add pulse spot (video)
+OK 16. Make map, add pulse spot (video)
+17. Fix problem with video webm on iOS
+18. Add container for whole site (limit the width of site)
 
 
 
