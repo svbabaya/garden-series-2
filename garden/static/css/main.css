@@ -2,7 +2,6 @@ body {
     position: relative; /* Для корректного позиционирования absolute */
     min-height: 100vh; /* Чтобы body был не меньше высоты экрана */
 }
-  
 .bottom-image {
     position: absolute;
     bottom: 0;
@@ -14,17 +13,18 @@ body {
 header {
     height: 50px;
     line-height: 50px;
-    background-color: #F5F7F0;
-    padding-left: 15px;
-    margin-bottom: 20px;
+    padding: 0 10px 0 15px;
+    margin-bottom: 15px;
 }
-
 header p {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     font-size: 14px;
     color: #212121;
+}
+.menu {
+    float: right;
 }
 
 main {
@@ -35,7 +35,7 @@ main {
 }
 
 .footer {
-    padding-left: 15px;
+    padding: 0 10px 0 15px;
     font-size: 14px;
     color: #212121;
     height: 280px;
@@ -49,16 +49,21 @@ main {
     color: #3A4A2F;
     margin-bottom: 20px;
 }
-
+.message {
+    margin-bottom: 25px;
+}
 .message__text {
     font-size: 16px;
     margin-bottom: 8px;
 }
-
-.message__author {
+.message__author p {
     font-size: 18px;
-    margin-bottom: 25px;
+    display: inline;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #212121;
 }
+
+
 
 .category-button {
     display: inline-flex;
@@ -68,20 +73,17 @@ main {
     background: #d9d9d9;
     color: #212121;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 40px;
     transition: background 0.3s;
     margin: 0 5px 10px 0;
 }
-  
 .category-button:hover {
     background: #cacaca;
 }
-
 .category-button span {
     padding-right: 10px;
     font-size: 14px;
 }
-  
 /* .category-button img {
     vertical-align: middle;
 } */
@@ -181,14 +183,16 @@ main {
 
 
 
-
 /* location.html */
 .map img {
     width: 300px;
 }
+.location-info {
+    margin-bottom: 20px;
+}
 .location {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
 }
 .location video {
     position: absolute;

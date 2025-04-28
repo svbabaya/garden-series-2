@@ -8,14 +8,16 @@
 
 <section class="message">
   <p class="message__text source-sans-3-400">{{ message.text|safe }}</p>
-  <p class="message__author caveat-400">{{ message.author|safe }}</p>
+  <div class="message__author">
+    <p class="caveat-400">{{ message.author|safe }}</p>
+  </div>
 </section>
 
 <section class="categories montserrat-alternates-medium">
   {% for category in categories %}
 
     <a href="{{ url_for('show_category', category_name=category.name) }}" class="category-button">
-      <img src="{{ url_for('static', filename='icons/icon_btn_02.png') }}" alt="Icon" width="40" height="40">
+      <img src="{{ url_for('static', filename='icons/icon_btn_02.png') }}" alt="Icon" width="50" height="50">
       <span>{{ category.value['title'] }} ({{ quantities[category.name] }})</span>
     </a>
 
