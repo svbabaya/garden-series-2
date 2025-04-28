@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -25,20 +26,24 @@
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='footer-bg.png') }}" alt="Image-footer" class="bottom-image">
+  <!-- <img src="{{ url_for('static', filename='footer-bg.png') }}" alt="Image-footer" class="bottom-image"> -->
 
-<header>
-  <img src="{{ url_for('static', filename='icons/logo_01.svg') }}" alt="Image-logo" class="logo">
-  <p class="header-text montserrat-alternates-medium">{{ settings['site_header'] }}</p>
-  <img src="{{ url_for('static', filename='icons/menu_01.png') }}" alt="Image-menu" class="menu">
-</header>
+<div class="site-container">
 
-<main class="main">
-  {% block main %}{% endblock %}
-</main>
+  <header>
+    <img src="{{ url_for('static', filename='icons/logo_01.svg') }}" alt="Image-logo" class="logo">
+    <p class="header-text montserrat-alternates-medium">{{ settings['site_header'] }}</p>
+    <img src="{{ url_for('static', filename='icons/menu_01.png') }}" alt="Image-menu" class="menu">
+  </header>
 
-<footer class="footer source-sans-3-400">
-</footer>
+  <main class="main">
+    {% block main %}{% endblock %}
+  </main>
+
+  <footer class="footer source-sans-3-400">
+  </footer>
+
+</div>
 
 </body>
 

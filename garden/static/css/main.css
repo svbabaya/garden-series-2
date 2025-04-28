@@ -1,14 +1,22 @@
 body {
-    position: relative; /* Для корректного позиционирования absolute */
-    min-height: 100vh; /* Чтобы body был не меньше высоты экрана */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
 }
-.bottom-image {
+/* .bottom-image {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     max-width: 100%;
-}  
+}   */
+
+.site-container {
+    flex-grow: 1;
+    background-image: url(../site_bg_02.svg);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+}
 
 header {
     height: 50px;
@@ -50,7 +58,7 @@ main {
     margin-bottom: 20px;
 }
 .message {
-    margin-bottom: 25px;
+    margin-bottom: 32px;
 }
 .message__text {
     font-size: 16px;
