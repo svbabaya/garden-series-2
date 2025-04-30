@@ -1,7 +1,8 @@
 body {
-    position: relative;
+    /* position: relative;
     min-height: 100vh;
-    display: flex;
+    display: flex; */
+    padding-top: 10px;
 }
 /* .bottom-image {
     position: absolute;
@@ -10,19 +11,17 @@ body {
     transform: translateX(-50%);
     max-width: 100%;
 }   */
-
 .site-container {
     flex-grow: 1;
     background-image: url(../site_bg_02.png);
     background-position: left bottom;
     background-repeat: no-repeat;
 }
-
 header {
     height: 50px;
     line-height: 50px;
     padding: 0 10px 0 15px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 header p {
     display: inline-block;
@@ -34,14 +33,12 @@ header p {
 .menu {
     float: right;
 }
-
 main {
     padding: 0 10px 0 15px;
     text-align: left;
     font-size: 14px;
     color: #212121;
 }
-
 .footer {
     padding: 0 10px 0 15px;
     font-size: 14px;
