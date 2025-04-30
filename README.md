@@ -45,3 +45,14 @@ OK 16. Make map, add pulse spot (video)
             }
         ]
 
+
+
+Messages:
+1. Phrase (normal)
+2. Poetry (normal)
+3. Puzzle
+3. Advert about garden from gardener
+4. Advert about school from teacher
+5. News about garden (add new plant, correct mistake)
+6. Сongratulation of someone
+7. Hot news (high priority)
