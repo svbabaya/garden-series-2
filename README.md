@@ -61,6 +61,8 @@ Information about plants:
 4. Make the story of the garden
 5. Start to make texts about plants in DOC format
 6. Make photos in the garden (in summer)
+7. Add very rare or very unordinary plants from all over the world
+8. Add inexistent plants from tales and fantastic stories
 
 Messages:
 1. Phrase (normal)
