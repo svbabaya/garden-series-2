@@ -28,6 +28,8 @@ create plant, create article, delete plant, delete article, create message, dele
 OK 16. Make map, add pulse spot (video)
 17. Fix problem with video webm on iOS
 18. Add container for whole site (limit the width of site)
+19. Correct footer bg image (thin lines, whithout shadows, svg)
+20. To Think: How to make spot in location.html for iOS Safary
 
 
 
@@ -45,7 +47,20 @@ OK 16. Make map, add pulse spot (video)
             }
         ]
 
+Design:
+1. Growing picture of plant - tree, tree with fruits, bush with flowers, berries etc (Change ones per day, week)
+2. Change icons of main buttons random (leaf, berry, flower, seed, butterfly, dragonfly, bird)
+3. Add menu (About Us, About Garden (Garden History), Plant List (List of all plants, Search (text))
+4. Add information in footer
+5. To Think: Design for wide screen, desktop
 
+Information about plants:
+1. Approve the catalog and numbers of the categories
+2. Create and approve rules of making for articles and messages
+3. Finish the map of location, make coordinate grid and positions in pixels (add to enum Location)
+4. Make the story of the garden
+5. Start to make texts about plants in DOC format
+6. Make photos in the garden (in summer)
 
 Messages:
 1. Phrase (normal)
@@ -56,3 +71,4 @@ Messages:
 5. News about garden (add new plant, correct mistake)
 6. Сongratulation of someone
 7. Hot news (high priority)
+8. To Think: Add expired time for news and absolute messages in model
