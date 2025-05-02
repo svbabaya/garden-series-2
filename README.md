@@ -53,6 +53,8 @@ Design:
 3. Add menu (About Us, About Garden (Garden History), Plant List (List of all plants, Search (text))
 4. Add information in footer
 5. To Think: Design for wide screen, desktop
+6. Add button Share on the card
+7. Use QR code for plants (in admin generate QR image and send to email)
 
 Information about plants:
 1. Approve the catalog and numbers of the categories
