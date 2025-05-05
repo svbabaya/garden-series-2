@@ -26,10 +26,9 @@ create plant, create article, delete plant, delete article, create message, dele
 15. Add function for messages (priority handle)
 
 OK 16. Make map, add pulse spot (video)
-17. Fix problem with video webm on iOS
 18. Add container for whole site (limit the width of site)
 19. Correct footer bg image (thin lines, whithout shadows, svg)
-20. To Think: How to make spot in location.html for iOS Safary
+20. To Think: How to make spot in location.html for iOS Safary (Fix problem with video webm on iOS)
 
 
 

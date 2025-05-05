@@ -33,10 +33,15 @@
     {% endfor %}
 </section>
 
+
 <nav class="nav-buttons">
         <a href="{{ url_for('index') }}" class="nav-button">
             <span class="montserrat-alternates-medium">{{ settings['home_name'] }}</span>
         </a>
 </nav>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"></button>
+
+<script src="{{ url_for('static', filename='js/btn_top.js') }}"></script>
 
 {% endblock %}
