@@ -20,7 +20,7 @@ from . import services
 ### admin endpoints
 @app.route('/admin/')
 def open_admin_page():
-    return render_template('admin/admin.html')
+    return render_template('admin/admin.html', settings=settings)
 
 @app.route('/admin/message/', methods=('POST', 'GET'))
 def create_message():
@@ -44,12 +44,12 @@ def create_message():
 
         flash('New message created successful')
         return redirect(url_for('open_admin_page'))
-    return render_template('admin/message.html', form=form)
+    return render_template('admin/message.html', form=form, settings=settings)
 
 @app.route('/admin/messages/')
 def show_all_messages():
     messages = Message.query.all()
-    return render_template('admin/messages.html', messages=messages)
+    return render_template('admin/messages.html', messages=messages, settings=settings)
 
 # ToDo make edit form for message
 @app.route('/admin/message/<int:message_id>', methods=('GET', 'PATCH'))
@@ -84,12 +84,12 @@ def create_plant():
 
         flash('New plant created successful')
         return redirect(url_for('open_admin_page'))
-    return render_template('admin/plant.html', form=form)
+    return render_template('admin/plant.html', form=form, settings=settings)
 
 @app.route('/admin/plants/')
 def show_all_plants():
     plants = Plant.query.all()
-    return render_template('admin/plants.html', plants=plants)
+    return render_template('admin/plants.html', plants=plants, settings=settings)
 
 # ToDo make edit form for plant
 @app.route('/admin/plant/<int:plant_id>', methods=('GET', 'PATCH'))
@@ -104,7 +104,7 @@ def edit_plant(plant_id):
 def index():
     current_message = services.get_message_for_render()
     quantities = services.get_quantity_categories()
-    return render_template ('index.html', 
+    return render_template ('view/index.html', 
                             message=current_message, 
                             categories=Category,
                             quantities=quantities,
@@ -114,7 +114,7 @@ def index():
 @app.route('/plants/category/<category_name>/')
 def show_category(category_name):
     plants = services.get_category_plants_for_render(category_name)
-    return render_template('category.html', 
+    return render_template('view/category.html', 
                            category_title=Category[category_name].value['title'],
                            plants=plants,
                         #    quantity=services.get_quantity(plants),
@@ -127,7 +127,7 @@ def show_plant(plant_id):
 
     # ToDo get all articles about current plant and send to template
 
-    return render_template('plant.html',
+    return render_template('view/plant.html',
                            plant_id=plant.id, 
                            plant_name=plant.name, 
                            category=plant.category,
@@ -137,7 +137,7 @@ def show_plant(plant_id):
 @app.route('/plant/<plant_id>/location')
 def show_map(plant_id):
     plant = services.get_plant(plant_id)
-    return render_template('location.html',
+    return render_template('view/location.html',
                            plant_id=plant.id,
                            plant_name=plant.name,
                            category=plant.category,

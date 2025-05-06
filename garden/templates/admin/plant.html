@@ -1,10 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Garden admin{% endblock %}</h1>
-{% endblock %}
-
-{% block content %}
+{% block main %}
   <form action="/admin/plant/" method="post" class="">
     {{ form.hidden_tag() }}
     <p>{{ form.name.label() }} {{ form.name() }}</p>

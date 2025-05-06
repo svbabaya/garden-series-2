@@ -16,19 +16,22 @@ OK 6. Add settings.json
 OK 9. Make buttons for categories on index.html
 10. Make design index.html
 
-12. Add number of plants in the each cathegory (index.html and cathegory.html)
+OK 12. Add number of plants in the each cathegory (index.html and cathegory.html)
 
-13. Make functions CRUD (get all plants, get cathegory plants, get one plant, get number plants,
-create plant, create article, delete plant, delete article, create message, delete message, update plant, update message, update article)
+13. Make functions CRUD (get all plants, get cathegory plants, get one plant, get number plants, create plant, create article, delete plant, delete article, create message, delete message, update plant, update message, update article)
 
 14. Add localization
 
 15. Add function for messages (priority handle)
+8. Add Duration attribute in Message model
+8. To Think: Add expired time for news and absolute messages in model
 
 OK 16. Make map, add pulse spot (video)
 18. Add container for whole site (limit the width of site)
 19. Correct footer bg image (thin lines, whithout shadows, svg)
 20. To Think: How to make spot in location.html for iOS Safary (Fix problem with video webm on iOS)
+
+21. Make common template base.html and two templates: admin_base.html, view_base.html
 
 
 
@@ -49,11 +52,17 @@ OK 16. Make map, add pulse spot (video)
 Design:
 1. Growing picture of plant - tree, tree with fruits, bush with flowers, berries etc (Change ones per day, week)
 2. Change icons of main buttons random (leaf, berry, flower, seed, butterfly, dragonfly, bird)
-3. Add menu (About Us, About Garden (Garden History), Plant List (List of all plants, Search (text))
+3. Add menu About Us, About Garden (Garden History), Plant List (List of all plants, Search (text))
 4. Add information in footer
 5. To Think: Design for wide screen, desktop
 6. Add button Share on the card
 7. Use QR code for plants (in admin generate QR image and send to email)
+
+OK 8. Add floating button Top in category.html
+
+
+
+
 
 Information about plants:
 1. Approve the catalog and numbers of the categories
@@ -74,4 +83,4 @@ Messages:
 5. News about garden (add new plant, correct mistake)
 6. Сongratulation of someone
 7. Hot news (high priority)
-8. To Think: Add expired time for news and absolute messages in model
+

@@ -1,10 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Garden admin{% endblock %}</h1>
-{% endblock %}
-
-{% block content %}
+{% block main %}
   {% for plant in plants %}
     <p>{{ plant.id }}</p>
     <p>{{ plant.name }}</p>
