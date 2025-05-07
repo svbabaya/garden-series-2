@@ -11,11 +11,7 @@ def get_category_plants_for_render(category_name):
                                 Plant.display == 'enabled').all()
     return plants
 
-def get_message_for_render():
-    message = Message.query.filter(Message.priority == 'normal',
-                                           Message.status != 'DELETED',
-                                           Message.display == 'enabled').order_by(func.random()).first()
-    return message
+
 
 def get_quantity_categories():
     dict = {}
@@ -29,3 +25,13 @@ def get_quantity_categories():
 def get_plant(id):
     plant = Plant.query.filter(Plant.id == id).first()
     return plant
+
+
+
+
+# Messages
+def get_message_for_render():
+    message = Message.query.filter(Message.priority == 'normal',
+                                           Message.status != 'DELETED',
+                                           Message.display == 'enabled').order_by(func.random()).first()
+    return message

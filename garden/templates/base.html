@@ -21,20 +21,19 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
 
   <title>{{ settings['site_title'] }}</title>
-  <meta name="description" content="{{ settings['description_garden'] }}">
-  <meta name="keywords" content="{{ settings['keywords'] }}">
+
+  {% block meta %}{% endblock %}
 
 </head>
 
 <body>
-  <!-- <img src="{{ url_for('static', filename='footer-bg.png') }}" alt="Image-footer" class="bottom-image"> -->
 
 <div class="site-container">
 
   <header>
     <img src="{{ url_for('static', filename='icons/logo_01.svg') }}" alt="Image-logo" class="logo">
     <p class="header-text montserrat-alternates-medium">{{ settings['site_header'] }}</p>
-    <img src="{{ url_for('static', filename='icons/menu_02.svg') }}" alt="Image-menu" class="menu">
+    {% block header %}{% endblock %}
   </header>
 
   <main class="main">
