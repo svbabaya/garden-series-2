@@ -26,35 +26,24 @@ def open_admin_page():
 def create_message():
     form = MessageForm(request.form)
     if request.method == 'POST' and form.validate():
-        text = form.text.data
-        author = form.author.data
-        priority = form.priority.data
-        
-        if form.display.data == True:
-            display = Display.enabled
-        else: 
-            display = Display.disabled
-
-        message = Message(text=text, 
-                          author=author, 
-                          priority=priority, 
-                          display=display)
-        db.session.add(message)
-        db.session.commit()
-
+        services.create_message(form)
         flash('New message created successful')
         return redirect(url_for('open_admin_page'))
     return render_template('admin/message.html', form=form, settings=settings)
 
 @app.route('/admin/messages/')
 def show_all_messages():
-    messages = Message.query.all()
+    messages = services.get_all_messages()
     return render_template('admin/messages.html', messages=messages, settings=settings)
 
 # ToDo make edit form for message
 @app.route('/admin/message/<int:message_id>', methods=('GET', 'PATCH'))
 def edit_message(message_id):
     return 'Open edit form for message'
+
+
+
+
 
 @app.route('/admin/plant/', methods=('POST', 'GET'))
 def create_plant():

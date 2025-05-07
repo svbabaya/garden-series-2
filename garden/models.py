@@ -90,6 +90,8 @@ class Message(db.Model):
     author = db.Column(db.String(100), nullable=False)
     priority = db.Column(db.Enum(Priority), nullable=False, default=Priority.low)
     display = db.Column(db.Enum(Display), nullable=False, default=Display.disabled)
+    # timestart = db.Column(db.DateTime, nullable=True)
+    # timefinish = db.Column(db.DateTime, nullable=True)
 
     status = db.Column(db.Enum(Status), nullable=False, default=Status.CREATED)
     timestamp = db.Column(db.DateTime, default=datetime.now)
