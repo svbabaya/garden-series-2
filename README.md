@@ -5,13 +5,13 @@ ToThink
 1. Does it need to add serial number of article to the model Article?
 
 ToDo
-1. Fix REST API and make review
+1. Fix REST API and review best practise
 2. Add migrations
 3. Add export db to json
 4. Add exceptions (db, json, images)
 5. Add Flask_upload for files
 OK 6. Add settings.json
-7. Make sceme of models in README
+7. Make sceme of models in README (mermaid)
 
 OK 9. Make buttons for categories on index.html
 10. Make design index.html
@@ -31,7 +31,7 @@ OK 16. Make map, add pulse spot (video)
 19. Correct footer bg image (thin lines, whithout shadows, svg)
 20. To Think: How to make spot in location.html for iOS Safary (Fix problem with video webm on iOS)
 
-21. Make common template base.html and two templates: admin_base.html, view_base.html
+OK 21. Make common template base.html and two templates: admin_base.html, view_base.html
 
 
 
@@ -61,9 +61,6 @@ Design:
 OK 8. Add floating button Top in category.html
 
 
-
-
-
 Information about plants:
 1. Approve the catalog and numbers of the categories
 2. Create and approve rules of making for articles and messages
@@ -77,10 +74,9 @@ Information about plants:
 Messages:
 1. Phrase (normal)
 2. Poetry (normal)
-3. Puzzle
+3. Puzzles
 3. Advert about garden from gardener
 4. Advert about school from teacher
 5. News about garden (add new plant, correct mistake)
 6. Сongratulation of someone
 7. Hot news (high priority)
-
