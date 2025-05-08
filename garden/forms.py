@@ -10,7 +10,7 @@ class MessageForm(FlaskForm):
                                                   ('news', 'news'), 
                                                   ('absolute', 'absolute')])
     display = BooleanField('display', default=False)
-    submit = SubmitField('upload')
+    submit = SubmitField('Save')
 
 class PlantForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(), Length(min=3, max=40)])

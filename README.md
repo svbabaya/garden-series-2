@@ -12,13 +12,17 @@ ToDo
 5. Add Flask_upload for files
 OK 6. Add settings.json
 7. Make sceme of models in README (mermaid)
+8. Make Logo active (Go home)
+9. Add modal window for Archive feature
 
 OK 9. Make buttons for categories on index.html
 10. Make design index.html
 
 OK 12. Add number of plants in the each cathegory (index.html and cathegory.html)
 
-13. Make functions CRUD (get all plants, get cathegory plants, get one plant, get number plants, create plant, create article, delete plant, delete article, create message, delete message, update plant, update message, update article)
+13. Make functions CRUD (get all plants, get cathegory plants, get one plant, create plant, create article, delete plant, delete article, update plant, update article)
+
+OK Create message, read messages, delete message, patch message
 
 14. Add localization
 

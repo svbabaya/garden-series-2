@@ -1,0 +1,18 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+  <form method="POST" action="/admin/message/{{ message.id }}" >
+    {{ form.hidden_tag() }}
+    <input type="hidden" name="_method" value="PATCH">
+    <p>{{ form.text.label() }} {{ form.text() }}</p>
+    <p>{{ form.author.label() }} {{ form.author() }}</p>
+    <p>{{ form.priority.label() }} {{ form.priority() }}</p>
+    <p>{{ form.display.label() }} {{ form.display() }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
+
+  <div class="btn-back">
+    <a href="{{ url_for('show_live_messages') }}">Back</a>
+  </div>  
+
+{% endblock %}

@@ -17,11 +17,14 @@ from . import services
 
 
 
-### admin endpoints
+### admin
 @app.route('/admin/')
 def open_admin_page():
-    return render_template('admin/admin.html', settings=settings)
+    return render_template('admin/admin.html', 
+                           settings=settings)
 
+
+## messages
 @app.route('/admin/message/', methods=('POST', 'GET'))
 def create_message():
     form = MessageForm(request.form)
@@ -29,22 +32,57 @@ def create_message():
         services.create_message(form)
         flash('New message created successful')
         return redirect(url_for('open_admin_page'))
-    return render_template('admin/message.html', form=form, settings=settings)
+    return render_template('admin/create_message.html', 
+                           form=form, 
+                           settings=settings)
 
 @app.route('/admin/messages/')
-def show_all_messages():
-    messages = services.get_all_messages()
-    return render_template('admin/messages.html', messages=messages, settings=settings)
+def show_live_messages():
+    messages = services.get_live_messages()
+    return render_template('admin/messages.html', 
+                           messages=messages, 
+                           settings=settings)
 
-# ToDo make edit form for message
-@app.route('/admin/message/<int:message_id>', methods=('GET', 'PATCH'))
-def edit_message(message_id):
-    return 'Open edit form for message'
+@app.route('/admin/message/<int:message_id>', methods=['GET', 'POST', 'DELETE', 'PATCH'])
+def handle_message(message_id):
+    if request.method == 'POST':
+        method = request.form.get('_method', '').upper()
+
+        if method == 'DELETE':
+            services.delete_message(message_id)
+            messages = services.get_live_messages()
+            return render_template('admin/messages.html', 
+                                   messages=messages, 
+                                   settings=settings)
+        elif method == 'PATCH':
+            form = MessageForm(request.form)
+            message = services.get_message_by_id(message_id)
+            if form.validate():
+                services.patch_message(form, message_id)
+                flash('Message patched successful')
+                return redirect(url_for('show_live_messages'))
+            
+    elif request.method == 'GET':
+            message = services.get_message_by_id(message_id)
+            form = MessageForm()
+            form.text.data = message.text
+            form.author.data = message.author
+            form.priority.data = message.priority.name
+
+            if message.display == Display.enabled:
+                form.display.data = True
+            else:
+                form.display.data = False    
+
+            return render_template('admin/edit_message.html', 
+                                   form=form,
+                                   message=message,
+                                   settings=settings)
 
 
 
 
-
+## plants
 @app.route('/admin/plant/', methods=('POST', 'GET'))
 def create_plant():
     form = PlantForm(request.form)
