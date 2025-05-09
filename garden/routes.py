@@ -12,7 +12,6 @@ from werkzeug.utils import secure_filename
 from . import services
 
 # from pathlib import Path
-
 # import jsonify
 
 
@@ -22,6 +21,7 @@ from . import services
 def open_admin_page():
     return render_template('admin/admin.html', 
                            settings=settings)
+
 
 
 ## messages
@@ -81,47 +81,64 @@ def handle_message(message_id):
 
 
 
-
 ## plants
 @app.route('/admin/plant/', methods=('POST', 'GET'))
 def create_plant():
     form = PlantForm(request.form)
     if request.method == 'POST' and form.validate():
-        name = form.name.data
-        category = form.category.data
-        code = form.code.data
-        intro = form.intro.data
-        thumbnail = form.thumbnail.data
-        location = form.location.data
-
-        if form.display.data == True:
-            display = Display.enabled
-        else: 
-            display = Display.disabled
-
-        plant = Plant(name=name,
-                      category=category,
-                      code=code,
-                      intro=intro,
-                      thumbnail=thumbnail,
-                      location=location,
-                      display=display)
-        db.session.add(plant)
-        db.session.commit()
-
+        services.create_plant(form)
         flash('New plant created successful')
         return redirect(url_for('open_admin_page'))
-    return render_template('admin/plant.html', form=form, settings=settings)
+    return render_template('admin/create_plant.html', 
+                           form=form, 
+                           settings=settings)
 
 @app.route('/admin/plants/')
-def show_all_plants():
-    plants = Plant.query.all()
-    return render_template('admin/plants.html', plants=plants, settings=settings)
+def show_live_plants():
+    plants = services.get_live_plants()
+    return render_template('admin/plants.html', 
+                           plants=plants, 
+                           settings=settings)
 
-# ToDo make edit form for plant
-@app.route('/admin/plant/<int:plant_id>', methods=('GET', 'PATCH'))
-def edit_plant(plant_id):
-    return 'Open edit form for plant'
+@app.route('/admin/plant/<int:plant_id>', methods=['GET', 'POST', 'DELETE', 'PATCH'])
+def handle_plant(plant_id):
+    if request.method == 'POST':
+        method = request.form.get('_method', '').upper()
+
+        if method == 'DELETE':
+            services.delete_plant(plant_id)
+            plants = services.get_live_plants()
+            return render_template('admin/plants.html', 
+                                   plants=plants, 
+                                   settings=settings)
+        elif method == 'PATCH':
+            form = PlantForm(request.form)
+            plant = services.get_plant_by_id(plant_id)
+            if form.validate():
+                services.patch_plant(form, plant_id)
+                flash('Plant patched successful')
+                return redirect(url_for('show_live_plants'))
+            
+    elif request.method == 'GET':
+            plant = services.get_plant_by_id(plant_id)
+            form = PlantForm()
+            form.name.data = plant.name
+            form.category.data = plant.category.name
+            form.code.data = plant.code
+
+            form.intro.data = plant.intro
+            form.thumbnail.data = plant.thumbnail
+            form.location.data = plant.location.name
+
+            if plant.display == Display.enabled:
+                form.display.data = True
+            else:
+                form.display.data = False    
+
+            return render_template('admin/edit_plant.html', 
+                                   form=form,
+                                   plant=plant,
+                                   settings=settings)
 
 
 
@@ -150,7 +167,7 @@ def show_category(category_name):
 
 @app.route('/plants/<plant_id>/')
 def show_plant(plant_id):
-    plant = services.get_plant(plant_id)
+    plant = services.get_plant_by_id(plant_id)
 
     # ToDo get all articles about current plant and send to template
 
@@ -160,10 +177,9 @@ def show_plant(plant_id):
                            category=plant.category,
                            settings=settings)
 
-
 @app.route('/plant/<plant_id>/location')
 def show_map(plant_id):
-    plant = services.get_plant(plant_id)
+    plant = services.get_plant_by_id(plant_id)
     return render_template('view/location.html',
                            plant_id=plant.id,
                            plant_name=plant.name,

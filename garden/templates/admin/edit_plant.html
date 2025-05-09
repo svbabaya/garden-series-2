@@ -1,0 +1,23 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+  <form method="POST" action="/admin/plant/{{ plant.id }}" >
+    {{ form.hidden_tag() }}
+    <input type="hidden" name="_method" value="PATCH">
+    <p>{{ form.name.label() }} {{ form.name() }}</p>
+    <p>{{ form.category.label() }} {{ form.category() }}</p>
+    <p>{{ form.code.label() }} {{ form.code() }}</p>
+
+    <p>{{ form.intro.label() }} {{ form.intro() }}</p>
+    <p>{{ form.thumbnail.label() }} {{ form.thumbnail() }}</p>
+    <p>{{ form.location.label() }} {{ form.location() }}</p>
+
+    <p>{{ form.display.label() }} {{ form.display() }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
+
+  <div class="btn-back">
+    <a href="{{ url_for('show_live_plants') }}">Back</a>
+  </div>  
+
+{% endblock %}

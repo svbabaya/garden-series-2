@@ -1,6 +1,11 @@
 {% extends 'admin_base.html' %}
 
 {% block main %}
+
+  {% for msg in get_flashed_messages() %}
+    <div>{{ msg }}</div>
+  {% endfor %}
+
   {% for plant in plants %}
     <p>{{ plant.id }}</p>
     <p>{{ plant.name }}</p>
@@ -10,11 +15,16 @@
     <p>{{ plant.thumbnail }}</p>
     <p>{{ plant.location }}</p>
     <p>{{ plant.display }}</p>
-    <p>{{ plant.status }}</p>
-    <p>{{ plant.timestamp }}</p>
+
     <button type="button">
-      <a href="{{ url_for('edit_plant', plant_id=plant.id) }}">Edit</a>
+      <a href="{{ url_for('handle_plant', plant_id=plant.id) }}">Edit</a>
     </button>
+
+    <form method="POST" action="/admin/plant/{{ plant.id }}">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit">Archive</button>
+    </form>
+
     <hr>
   {% endfor %}
   <div class="btn-back">
