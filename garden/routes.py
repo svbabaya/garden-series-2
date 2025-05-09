@@ -227,6 +227,5 @@ def send_file(filename):
 #   data = Message.query.all()
 #   return jsonify(data) 
 
-
 if __name__ == '__main__':
     app.run(debug=True)

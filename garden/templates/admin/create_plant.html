@@ -1,0 +1,22 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+  <form action="/admin/plant/" method="post">
+    {{ form.hidden_tag() }}
+    <p>{{ form.name.label() }} {{ form.name() }}</p>
+    <p>{{ form.category.label() }} {{ form.category() }}</p>
+    <p>{{ form.code.label() }} {{ form.code() }}</p>
+
+    <p>{{ form.intro.label() }} {{ form.intro() }}</p>
+    <p>{{ form.thumbnail.label() }} {{ form.thumbnail() }}</p>
+    <p>{{ form.location.label() }} {{ form.location() }}</p>
+
+    <p>{{ form.display.label() }} {{ form.display() }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
+
+  <div class="btn-back">
+    <a href="{{ url_for('open_admin_page') }}">Back</a>
+  </div>  
+
+{% endblock %}

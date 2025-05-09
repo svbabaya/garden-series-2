@@ -1,7 +1,7 @@
 {% extends 'admin_base.html' %}
 
 {% block main %}
-  <form action="/admin/message/" method="post" class="">
+  <form action="/admin/message/" method="post">
     {{ form.hidden_tag() }}
     <p>{{ form.text.label() }} {{ form.text() }}</p>
     <p>{{ form.author.label() }} {{ form.author() }}</p>

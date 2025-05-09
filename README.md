@@ -20,9 +20,12 @@ OK 9. Make buttons for categories on index.html
 
 OK 12. Add number of plants in the each cathegory (index.html and cathegory.html)
 
-13. Make functions CRUD (get all plants, get cathegory plants, get one plant, create plant, create article, delete plant, delete article, update plant, update article)
+13. Make functions CRUD for article
 
-OK Create message, read messages, delete message, patch message
+OK Create, read, update, delete plant
+OK Create, read, update, delete message
+
+13. Add open file feature in plant create page (don't use name of dir "plants")
 
 14. Add localization
 

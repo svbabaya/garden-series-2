@@ -31,4 +31,4 @@ class PlantForm(FlaskForm):
                                                   ('zone_4', 'zone_4'), 
                                                   ('zone_5', 'zone_5')])
     display = BooleanField('display', default=False)
-    submit = SubmitField('upload')
+    submit = SubmitField('Save')
