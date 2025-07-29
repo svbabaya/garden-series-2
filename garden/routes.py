@@ -1,4 +1,5 @@
-from flask import request, session, render_template, redirect, url_for, flash
+from flask import request, session, render_template, redirect, url_for, flash, g
+from user_agents import parse
 from garden import app, db
 from garden.models import Message, Display, Category, Plant
 from garden.forms import MessageForm, PlantForm
@@ -143,16 +144,20 @@ def handle_plant(plant_id):
 
 
 ### view endpoints
+@app.before_request
+def detect_user_agent():
+    g.browser = parse(request.headers.get('User-Agent'))
+
 @app.route('/')
 @app.route('/index/')
 def index():
     current_message = services.get_message_for_render()
     quantities = services.get_quantity_categories()
+
     return render_template ('view/index.html', 
                             message=current_message, 
                             categories=Category,
                             quantities=quantities,
-                            quantity=100,
                             settings=settings)
 
 @app.route('/plants/category/<category_name>/')
@@ -161,7 +166,6 @@ def show_category(category_name):
     return render_template('view/category.html', 
                            category_title=Category[category_name].value['title'],
                            plants=plants,
-                        #    quantity=services.get_quantity(plants),
                            quantity=services.get_quantity_categories()[category_name],
                            settings=settings)
 
@@ -185,6 +189,7 @@ def show_map(plant_id):
                            plant_name=plant.name,
                            category=plant.category,
                            location=plant.location.value,
+                           browser=g.browser.browser.family,
                            settings=settings)
 
 # @app.route('/uploads/<path:filename>')  # Обратите внимание на <path:filename>
